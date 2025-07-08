@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Horizontal</title>
-    <link rel="stylesheet" href="./Css/style.css" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Initial Page</title>
+  <link rel="stylesheet" href="./Css/style.css" />
 </head>
 
 <body>
-    <div class="scroll-container" id="scrollContainer">
-        <section class="page">Home</section>
-        <section class="page">Sobre</section>
-        <section class="page">Serviços</section>
-    </div>
+  <!-- Background container with an image, an overlay and a wavy panel -->
+  <div class="background-container">
+    <div class="bg-img"></div>
+    <!-- <img src="./Assets/initial_page_bckg.webp" alt="Fairy princess artwork by Alpachitron" class="bg-image" /> -->
+    <div class="bg-overlay"></div>
+    <div class="wavy-panel"></div>
+    <!-- <img src="Assets/svgs/intial_page_panel.svg" alt="Wavy Panel" class="wavy-panel" /> -->
+  </div>
+  <!-- Bellow is everything that sits on top of the wavy panel background -->
+  <main class="content">
+    <img src="./Assets/svgs/tittle_project.svg" alt="portfolio squiggles" class="squiggles" />
+    <h1 class="logo">Port<br><span>folio</span></h1>
 
-    <div class="nav-buttons">
-        <button id="prevBtn">⬅️ Anterior</button>
-        <button id="nextBtn">Próximo ➡️</button>
-    </div>
+    <nav class="nav-buttons">
+      <a href="home.html" class="btn">Home</a>
+      <a href="about.html" class="btn">About me</a>
+      <a href="projects.html" class="btn">Projects</a>
+    </nav>
 
-    <script src="./js/script.js"></script>
+    <footer class="footer">
+      <p>© Jessica Serra</p>
+      <p id="year">2025</p>
+    </footer>
+  </main>
+
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
