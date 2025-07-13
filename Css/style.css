@@ -33,7 +33,8 @@
 body {
     margin: 0;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: 'Poppins', sans-serif;
     background-color: #e6e6e6;
     width: 100vw;
@@ -42,318 +43,477 @@ body {
 
 .background-container {
     position: absolute;
-    inset: 0;
-    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+
 }
 
 /* 1. Background image on the left */
-/* .bg-image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 55vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 1;
-} */
 
 .bg-img {
-    background-image: url(../Assets/initial_page_bckg.webp);
-    width: 100vw;
+    position: absolute;
+    background-image: url(../Assets/initial_page_bckg_cropped.webp);
+    width: 60vw;
     height: 100vh;
     background-size: cover;
-    z-index: 1;
+
 }
 
 /* 2. Semi-transparent overlay */
 .bg-overlay {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 55vw;
+    width: 60vw;
     height: 100vh;
     background-color: rgba(162, 130, 197, 0.3);
     /* purple tone with 50% opacity */
-    z-index: 2;
 }
 
-/* 3. Wavy SVG on top */
-/* .wavy-panel {
-    position: absolute;
-    top: 0;
-    /* left: 15%; */
-/* bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3;
-    pointer-events: none;
-} */
+/* 3. Wavy panel background
+ This is the wavy panel background that sits on top of the overlay 
+ It's an SVG image that covers the entire viewport */
 .wavy-panel {
     background-image: url(../Assets/svgs/intial_page_panel.svg);
-    background-size: cover;
-    width: 100vw;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 145vw;
     height: 100vh;
-    z-index: 3;
-    display: flex;
-    justify-content: right;
-    margin-bottom: 20%;
+    position: absolute;
 }
 
 /* Content sits on top */
 .content {
-    position: relative;
-    z-index: 4;
-    height: calc(100% - 60px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    /* left: 20%; */
-}
-
-.squiggles {
-    position: absolute;
-    top: 2%;
-    left: 26%;
-    width: 55vw;
-    height: 55vh;
-    /* Adjust size as needed */
-    object-fit: contain;
-    z-index: 5;
-    pointer-events: none;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    align-content: flex-end;
 }
 
 /* The logo is the name Portfolio on the page with the squiggles */
-.logo {
-    font-size: 7rem;
-    margin-bottom: 2rem;
-    font-family: "AMORIA", sans-serif;
-    color: #A282C5;
-    -webkit-text-stroke: 0.1px #3B404D;
-    text-align: center;
-}
 
-.logo span {
-    color: #A282C5;
-    font-family: "AMORIA", sans-serif;
-    margin-left: 45%;
+.squiggles {
+    position: relative;
+    display: flex;
+    align-self: flex-end;
+    width: 50vw;
+    height: 50vh;
+    background-image: url(../Assets/tittleandsquiggles.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 1;
 }
 
 /* 3 buttons that scroll the user to the page selected*/
 .nav-buttons {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-left: 10%;
+    align-self: flex-end;
+    gap: 2rem;
+    width: 32vw;
+    z-index: 2;
 }
 
 .btn {
-    background-color: #F29B70;
-    padding: 1rem 3rem;
+    background-color: var(--bubble-color, #F29B70);
+    color: #fff !important;
+    border: none;
     border-radius: 12px;
-    box-shadow: 2px 2px 0 #656565;
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    width: 15rem;
+    height: 3rem;
+    position: relative;
+    z-index: 3;
+}
+
+.btn:active {
+    transform: scale(0.98);
+    background-color: var(--bubble-color);
+}
+
+.btn span.shape {
+    height: 2.7rem;
+    width: 15rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.btn span span {
+    content: "";
+    position: absolute;
+    margin: auto;
+    height: 8px;
+    width: 2px;
+    background: var(--bubble-color, #F29B70);
+    opacity: 0;
+}
+
+.btn span span:nth-of-type(1) {
+    top: -20px;
+    left: 0;
+    right: 0;
+}
+
+.btn span span:nth-of-type(2) {
+    bottom: -20px;
+    left: 0;
+    right: 0;
+}
+
+.btn span span:nth-of-type(3) {
+    top: 0;
+    bottom: 0;
+    left: -10px;
+}
+
+.btn span span:nth-of-type(4) {
+    top: 0;
+    bottom: 0;
+    right: -10px;
+}
+
+.btn span span:nth-of-type(5) {
+    top: -20px;
+    left: -70%;
+    right: 0;
+    transform: rotate(-30deg);
+}
+
+.btn span span:nth-of-type(6) {
+    top: -20px;
+    left: 0;
+    right: -70%;
+    transform: rotate(30deg);
+}
+
+.btn span span:nth-of-type(7) {
+    bottom: -20px;
+    right: 0;
+    left: -70%;
+    transform: rotate(30deg);
+}
+
+.btn span span:nth-of-type(8) {
+    bottom: -20px;
+    left: 0;
+    right: -70%;
+    transform: rotate(-30deg);
+}
+
+/* animations */
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn.active {
+    animation: bounce 0.3s ease-out 1;
+    background-color: var(--bubble-color);
+}
+
+.btn.active span span:nth-of-type(1) {
+    animation: anim1 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(2) {
+    animation: anim2 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(3) {
+    animation: anim3 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(4) {
+    animation: anim4 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(5) {
+    animation: anim5 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(6) {
+    animation: anim6 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(7) {
+    animation: anim7 0.4s ease-out 1;
+}
+
+.btn.active span span:nth-of-type(8) {
+    animation: anim8 0.4s ease-out 1;
+}
+
+@keyframes anim1 {
+    0% {
+        transform: scaleY(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(-10px) scaleY(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-20px) scaleY(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim2 {
+    0% {
+        transform: scaleY(1);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(10px) scaleY(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(20px) scaleY(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim3 {
+    0% {
+        transform: rotate(90deg) scaleX(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(90deg) translateY(10px) scaleX(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(90deg) translateY(20px) scaleX(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim4 {
+    0% {
+        transform: rotate(90deg) scaleX(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(90deg) translateY(-10px) scaleX(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(90deg) translateY(-20px) scaleX(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim5 {
+    0% {
+        transform: rotate(-30deg) scaleY(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(-30deg) translateY(-8px) scaleY(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(-30deg) translateY(-16px) scaleY(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim6 {
+    0% {
+        transform: rotate(30deg) scaleY(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(30deg) translateY(-8px) scaleY(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(30deg) translateY(-16px) scaleY(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim7 {
+    0% {
+        transform: rotate(30deg) scaleY(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(30deg) translateY(8px) scaleY(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(30deg) translateY(16px) scaleY(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes anim8 {
+    0% {
+        transform: rotate(-30deg) scaleY(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(-30deg) translateY(8px) scaleY(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(-30deg) translateY(16px) scaleY(0.5);
+        opacity: 0;
+    }
 }
 
 .btn:nth-child(2) {
     background-color: #A282C5;
 }
 
-.btn:nth-child(2):hover {
-    background-color: #8459B1;
-}
-
 .btn:nth-child(3) {
     background-color: #AAB8DB;
 }
 
-.btn:nth-child(3):hover {
-    background-color: #7C8EBC;
-}
-
-.btn:hover {
-    background-color: #C28280;
-    box-shadow: 0 0 0 #888;
-    transform: translateY(2px);
-}
-
-/* Footer needs to stay stuck in place */
-.footer {
+/* Footer needs to stay stuck in place and is the same for all pages */
+footer {
     display: flex;
-    position: fixed;
-    bottom: 1rem;
-    right: 2rem;
-    font-size: 0.8rem;
-    gap: 2rem;
     color: #888;
-    z-index: 6;
+    gap: 2rem;
+    right: 2rem;
+    bottom: 1rem;
+    position: fixed
 }
 
+/* Home page bellow */
 
-/* from tablet to mobile */
-@media (max-width: 768px) {
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden;
-        font-family: "poppins", sans-serif;
-    }
-
-    .background-container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    .bg-image {
-        width: 100vw;
-        height: 50vh;
-        object-fit: cover;
-        object-position: center 60%;
-        z-index: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .bg-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 50vh;
-        background: rgba(162, 130, 197, 0.3);
-        z-index: 2;
-    }
-
-    .wavy-panel {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100vh;
-        height: 100vw;
-        transform: rotate(90deg);
-        transform-origin: left bottom;
-        z-index: 3;
-        object-fit: cover;
-    }
-
-    .content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 50vh;
-        /* Match wavy panel height */
-        z-index: 4;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        box-sizing: border-box;
-    }
-
-    .logo {
-        font-size: 2.2rem;
-        font-weight: bold;
-        color: #A282C5;
-        /* Purple color to match lofi */
-        text-align: center;
-        margin-bottom: 1rem;
-        line-height: 1.1;
-    }
-
-    .logo span {
-        display: block;
-        margin-left: 0;
-    }
-
-    .nav-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-        max-width: 280px;
-        margin-bottom: 2rem;
-    }
-
-    .btn {
-        display: block;
-        width: 100%;
-        padding: 1rem;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 25px;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-    }
-
-    /* Button colors to match lofi design */
-    .btn:nth-child(1) {
-        background-color: #F97316;
-        /* Orange for Home */
-        color: white;
-    }
-
-    .btn:nth-child(2) {
-        background-color: #8B5CF6;
-        /* Purple for About me */
-        color: white;
-    }
-
-    .btn:nth-child(3) {
-        background-color: #60A5FA;
-        /* Blue for Projects */
-        color: white;
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .footer {
-        position: absolute;
-        bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        font-size: 0.8rem;
-        color: #666;
-        z-index: 5;
-    }
-
-    .footer p {
-        margin: 0.2rem 0;
-    }
+.pageHome {
+    background-image: url(../Assets/backgroundlightmode.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* Extra small mobile devices */
-@media (max-width: 480px) {
-    .logo {
-        font-size: 2.2rem;
-    }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
+    position: relative;
+    width: 100vw;
+    height: 100px;
+}
 
-    .btn {
-        font-size: 0.9rem;
-        padding: 0.9rem;
-    }
+.portfolio {
+    position: absolute;
+    top: 2rem;
+    right: 5rem;
+}
 
-    .footer {
-        font-size: 0.7rem;
-    }
+.portfolio a {
+    text-decoration: none;
+    color: #A282C5;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #3B404D;
+    font-family: "AMORIA", serif;
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.8;
+}
 
-    .content {
-        padding: 1.5rem 1rem;
-    }
+.folio {
+    margin-left: 5.5rem;
+}
+
+.page-indicators {
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 77vw;
+    /* Adjust width to allow flex distribution */
+    justify-content: flex-start;
+    /* Align items to the start */
+    align-items: center;
+}
+
+.dot {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    transition: margin-left 1s ease-in-out;
+    /* Add transition for smooth movement */
+}
+
+.dot-blue {
+    background-color: #AAB8DB;
+    order: 1;
+}
+
+.dot-orange {
+    background-color: #F29B70;
+    order: 2;
+}
+
+.dot-green {
+    background-color: #9FC280;
+    order: 3;
+}
+
+/* About page bellow */
+.pageAbout {
+    background-image: url(../Assets/backgroundlightmode.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Project page bellow */
+.pageProjects {
+    background-image: url(../Assets/backgroundlightmode.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.scroll-horizontal {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
 }
