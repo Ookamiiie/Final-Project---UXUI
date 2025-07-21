@@ -13,55 +13,21 @@
 </head>
 
 <body>
+
   <!-- Background container with an image, an overlay and a wavy panel -->
   <div class="background-container">
     <div class="bg-img"></div>
     <div class="bg-overlay"></div>
     <div class="wavy-panel"></div>
   </div>
-
   <!-- Bellow is everything that sits on top of the wavy panel background -->
   <main>
+
+
     <div class="content" id="initialpage">
       <div class="squiggles"> </div>
 
       <nav class="nav-buttons">
-        <!-- <button class="btn" data-target="#home" data-bubble-color="#F29B70"> Home
-          <span class="shape">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button>
-        <button class="btn" data-target="#about" data-bubble-color="#A282C5"> About me
-          <span class="shape">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button>
-        <button class="btn" data-target="#projects" data-bubble-color="#AAB8DB"> Projects
-          <span class="shape">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button> -->
       </nav>
 
       <footer class="text-end">
@@ -70,46 +36,119 @@
       </footer>
     </div>
 
+    <!-- These are the horizontally scrolling sections -->
     <div class="scroll-horizontal">
-      <div class="pageHome" id="home">
+      <div class="sticky-wrapper">
+        <div class="element-wrapper">
+          <section class="scroll pageHome" id="home">
 
-        <nav class="navbar">
-          <div class="container-fluid">
-            <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
-          </div>
-          <div class="page-indicators">
-            <div class="dot dot-blue"></div>
-            <div class="dot dot-orange"></div>
-            <div class="dot dot-green"></div>
-          </div>
-        </nav>
+            <nav class="navbar">
+              <div class="container-fluid">
+                <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+              </div>
+              <div class="page-indicators">
+                <div class="dot dot-blue"><a href="#home"></a></div>
+                <div class="dot dot-orange"><a href="#about"></a></div>
+                <div class="dot dot-green"><a href="#projects"></a></div>
+              </div>
+            </nav>
+            <!-- Bellow is the home page content, central image with items and text around it-->
+            <div class="central-container">
+              <div class="homeimg">
+                <img src="./Assets/center_image.webp" alt="illustration with text bubbles around it"
+                  class="center-image">
+              </div>
+              <div class="textbbs">
+                <p class="bbtext1">Olá sou a Jéssica!</p>
+                <p class="bbtext2"> Aqui vais encontrar ilustrações <br> e projetos criativos.</p>
+                <p class="bbtext3">Tudo o que faço tem um pouco de mim.</p>
+                <p class="bbtext4">Espreita o que ando a criar!</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="scroll pageAbout" id="about">
+            <nav class="navbar">
+              <div class="container-fluid">
+                <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+              </div>
+              <div class="page-indicators">
+                <div class="dot dot-blue"></div>
+                <div class="dot dot-orange"></div>
+                <div class="dot dot-green"></div>
+              </div>
+            </nav>
+            <div class="about-container">
+
+              <div class="abpanel">
+                <img src="./Assets/about_me_panel.png" alt="panel above the background">
+              </div>
+
+              <div class="mycontent">
+
+                <div class="divpai">
+                  <div class="portrait">
+                    <img src="./Assets/headME.webp" alt="portrait illustration">
+                  </div>
+                  <div class="info-block">
+                    <p>Nome: <br> Jéssica Serra</p>
+                    <p>Email: <br> jessicasofiaserra@gmail.com</p>
+                  </div>
+                </div>
+
+                <div class="myself">
+                  <p>Hi, I'm Jéssica - a creative mind with a growing passion for tech, front-end development, and UX/UI
+                    design. <br>
+                    With a background in customer support and visual arts, I combine problem-solving with an eye for
+                    design.
+                    I'm currently learning HTML, CSS, and JavaScript, and always excited to grow, build, and
+                    collaborate.
+                  </p>
+                </div>
+
+                <div class="button-section">
+                  <button class="cv-button" id="cvButton">
+                    <span class="btn-text">Download my cv</span>
+                    <span class="btn-icon">&#10549;</span>
+                  </button>
+                  <button class="cv-button linkedin-button" id="linkedinButton">
+                    <span class="btn-text"> My LinkedIn</span>
+                    <span class="btn-icon icon-on-white">in</span> <!-- or use SVG icon -->
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="scroll pageProjects" id="projects">
+            <nav class="navbar">
+              <div class="container-fluid">
+                <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+              </div>
+              <div class="page-indicators">
+                <div class="dot dot-blue"></div>
+                <div class="dot dot-orange"></div>
+                <div class="dot dot-green"></div>
+              </div>
+            </nav>
+
+            <div class="proj-container">
+              <div class="side-image">
+                <img src="./Assets/project_panels.webp" alt="illustrations of the sky and flowers">
+              </div>
+
+              <div class="proj-text">
+
+                <p>Aqui estão algums dos meus projetos.</p>
+                <p>Faço ilustrações digitalmente em temas variados, mas o meu foco está no feminino e na criação de
+                  personagens.</p>
+                <p>Também tenho alguns projetos de UI/UX que fazem parte deste portfólio.</p>
+                <p>Além disso partilho a minha arte noutras redes sociais, todos os links estão no meu Carrd.</p>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-
-    <div class="pageAbout" id="about">
-      <nav class="navbar">
-        <div class="container-fluid">
-          <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
-        </div>
-        <div class="page-indicators">
-          <div class="dot dot-blue"></div>
-          <div class="dot dot-orange"></div>
-          <div class="dot dot-green"></div>
-        </div>
-      </nav>
-    </div>
-
-    <div class="pageProjects" id="projects">
-      <nav class="navbar">
-        <div class="container-fluid">
-          <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
-        </div>
-        <div class="page-indicators">
-          <div class="dot dot-blue"></div>
-          <div class="dot dot-orange"></div>
-          <div class="dot dot-green"></div>
-        </div>
-      </nav>
     </div>
   </main>
 
