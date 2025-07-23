@@ -47,9 +47,9 @@
                 <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
               </div>
               <div class="page-indicators">
-                <div class="dot dot-blue"><a href="#home"></a></div>
-                <div class="dot dot-orange"><a href="#about"></a></div>
-                <div class="dot dot-green"><a href="#projects"></a></div>
+                <div class="dot dot-blue"></div>
+                <div class="dot dot-orange"></div>
+                <div class="dot dot-green"></div>
               </div>
             </nav>
             <!-- Bellow is the home page content, central image with items and text around it-->
@@ -150,6 +150,67 @@
         </div>
       </div>
     </div>
+    <section class="proj-ill">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+        </div>
+        <div class="page-indicators">
+          <div class="dot dot-blue"></div>
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-green"></div>
+        </div>
+      </nav>
+
+      <div class="gallery-section">
+        <h2>Illustrações</h2>
+        <div class="gallery">
+          <img src="./Assets/Illustrations/Inktober day 1 Dream.jpeg" alt="Artwork 1" class="thumb"
+            onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/Qinni.png" alt="Artwork 2" class="thumb position"
+            onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/Witch oc.png" alt="Artwork 1" class="thumb position"
+            onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/mother.jpg" alt="Artwork 2" class="thumb" onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/Inktober day 9 Treasure.jpg" alt="Artwork 1" class="thumb"
+            onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/Brun out.jpeg" alt="Artwork 2" class="thumb position"
+            onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/Fairy princess.jpeg" alt="Artwork 1" class="thumb"
+            onclick="openModal(this.src)">
+          <img src="./Assets/Illustrations/testing 2D Reference sign.jpg" alt="Artwork 2" class="thumb"
+            onclick="openModal(this.src)">
+        </div>
+      </div>
+
+      <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalimg">
+      </div>
+    </section>
+
+    <section class="proj-design">
+
+      <nav class="navbar">
+        <div class="container-fluid">
+          <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+        </div>
+        <div class="page-indicators">
+          <div class="dot dot-blue"></div>
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-green"></div>
+        </div>
+      </nav>
+
+      <div class="gallery-sectionD">
+        <h2>Design</h2>
+        <div class="galleryD">
+          <a href="/pages/Project1.html" class=" popup"><img src="./Assets/Design/lumeaS1.jpg" alt="Design 1"></a>
+          <a href="/pages/Project2.html" class=" popup"><img src="./Assets/Design/Artblob.jpg" alt="Design 2"></a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="./js/script.js"></script>

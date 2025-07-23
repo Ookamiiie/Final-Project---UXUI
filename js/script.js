@@ -191,21 +191,155 @@ document.getElementById("linkedinButton").addEventListener("click", () => {
   window.open("https://www.linkedin.com/in/jessica-sofia-serra/", "_blank");
 });
 
-const windowWidth = window.innerWidth;
-const horizontalLenght = document.querySelector(".element-wrapper").scrollWidth;
+const scrollContainer = document.querySelector(".scroll-horizontal");
+const wrapper = document.querySelector(".element-wrapper");
 
-const distFromTop = document.querySelector(".scroll-horizontal").offsetTop;
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const containerTop = scrollContainer.offsetTop;
+  const containerHeight = scrollContainer.offsetHeight;
+  const scrollDistance = containerHeight - window.innerHeight;
 
-const scrollDistance = distFromTop + horizontalLenght - windowWidth;
-
-document.querySelector(".scroll-horizontal").style.height =
-  horizontalLenght + "px";
-
-window.onscroll = function () {
-  const scrollTop = window.pageYOffset;
-
-  if (scrollTop >= distFromTop && scrollTop <= scrollDistance) {
-    document.querySelector(".element-wrapper").style.transform =
-      "translateX(-" + (scrollTop - distFromTop) + "px)";
+  // only scroll when we're within the container
+  if (scrollTop >= containerTop && scrollTop <= containerTop + scrollDistance) {
+    const progress = (scrollTop - containerTop) / scrollDistance;
+    const maxTranslate = wrapper.scrollWidth - window.innerWidth;
+    wrapper.style.transform = `translateX(-${progress * maxTranslate}px)`;
   }
-};
+});
+
+function openModal(imageSrc) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalimg");
+
+  modal.style.display = "flex";
+  modalImg.src = imageSrc;
+
+  // Reset everything
+  modalImg.classList.remove("zoomed");
+  modalImg.style.transform = "scale(1)";
+  modalImg.style.left = "0px";
+  modalImg.style.top = "0px";
+
+  let isZoomed = false;
+  let isDragging = false;
+  let startX, startY;
+  let currentX = 0,
+    currentY = 0;
+  let moved = false;
+
+  // Mousedown: Start drag
+  modalImg.onmousedown = function (e) {
+    if (!isZoomed) return;
+    isDragging = true;
+    moved = false;
+    startX = e.clientX - currentX;
+    startY = e.clientY - currentY;
+    modalImg.style.cursor = "grabbing";
+    e.preventDefault();
+  };
+
+  // Mousemove: Do drag
+  document.onmousemove = function (e) {
+    if (!isDragging || !isZoomed) return;
+    currentX = e.clientX - startX;
+    currentY = e.clientY - startY;
+    modalImg.style.left = currentX + "px";
+    modalImg.style.top = currentY + "px";
+    moved = true;
+  };
+
+  // Mouseup: End drag
+  document.onmouseup = function () {
+    if (isDragging) {
+      isDragging = false;
+      modalImg.style.cursor = isZoomed ? "grab" : "zoom-in";
+    }
+  };
+
+  // Click to toggle zoom (only if not dragged)
+  modalImg.onclick = function (e) {
+    e.stopPropagation(); // prevent closing modal
+    if (moved) {
+      moved = false; // prevent zoom toggle if dragged
+      return;
+    }
+
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+      modalImg.classList.add("zoomed");
+      modalImg.style.transform = "scale(2)";
+      modalImg.style.cursor = "grab";
+    } else {
+      modalImg.classList.remove("zoomed");
+      modalImg.style.transform = "scale(1)";
+      modalImg.style.left = "0px";
+      modalImg.style.top = "0px";
+      modalImg.style.cursor = "zoom-in";
+    }
+  };
+
+  // Allow clicking outside image to close modal
+  document.getElementById("imageModal").addEventListener("click", function (e) {
+    const modalDesign = document.getElementById("modalDesign");
+    if (!modalDesign.contains(e.target)) {
+      closeModal();
+    }
+  });
+}
+function closeModal() {
+  const modal = document.getElementById("imageModal");
+  const modalDesign = document.getElementById("modalDesign");
+
+  modal.style.display = "none";
+  modalDesign.classList.remove("zoomed");
+  modalDesign.style.transform = "scale(1)";
+  modalDesign.style.left = "0px";
+  modalDesign.style.top = "0px";
+  modalDesign.style.cursor = "zoom-in";
+}
+
+let currentSlide = 0;
+let currentProject = "";
+
+function openModal(project) {
+  document.getElementById("myModal").style.display = "block";
+  currentProject = project;
+  currentSlide = 0;
+  updateSlides();
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+  const slides = document.querySelectorAll(".modal-slide");
+  slides.forEach((slide) => (slide.style.display = "none"));
+}
+
+function updateSlides() {
+  const allSlides = document.querySelectorAll(".modal-slide");
+  allSlides.forEach((slide) => (slide.style.display = "none"));
+
+  const projectSlides = document.querySelectorAll(
+    `.modal-slide.${currentProject}`
+  );
+  if (projectSlides.length > 0) {
+    projectSlides[currentSlide].style.display = "block";
+  }
+}
+
+function nextSlide() {
+  const projectSlides = document.querySelectorAll(
+    `.modal-slide.${currentProject}`
+  );
+  if (currentSlide < projectSlides.length - 1) {
+    currentSlide++;
+    updateSlides();
+  }
+}
+
+function prevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    updateSlides();
+  }
+}

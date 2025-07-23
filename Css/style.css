@@ -59,6 +59,7 @@ html {
 }
 
 body {
+    padding: 0;
     margin: 0;
     position: relative;
     overflow-y: auto;
@@ -69,11 +70,12 @@ body {
     overflow-x: hidden;
 }
 
+
 main {
     display: block;
     width: 100vw;
     height: auto;
-    overflow: visible;
+
 }
 
 .background-container {
@@ -436,18 +438,6 @@ main {
     }
 }
 
-/* .btn:nth-child(1) {
-    background-color: #F29B70;
-}
-
-.btn:nth-child(2) {
-    background-color: #A282C5;
-}
-
-.btn:nth-child(3) {
-    background-color: #AAB8DB;
-} */
-
 /* Footer needs to stay stuck in place and is the same for all pages */
 footer {
     display: flex;
@@ -460,28 +450,33 @@ footer {
 
 /* Show horizontal scroll container when active */
 .scroll-horizontal {
-    padding: 0 0;
-    scroll-snap-type: y mandatory;
-}
-
-.sticky-wrapper {
-    overflow: hidden;
-    position: sticky;
+    position: relative;
+    height: 1000vh;
+    background: #f5f5f5;
 }
 
 .element-wrapper {
-    position: relative;
     display: flex;
+    height: 100%;
+    width: 100vw;
+    will-change: transform;
+
 }
 
+.sticky-wrapper {
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    width: 100vw;
+}
 
 /* Home page bellow */
-
 .pageHome {
     background-image: url(../Assets/backgroundlightmode.webp);
     background-size: cover;
     background-position: center;
     width: 100vw;
+    height: 100vh;
 }
 
 .navbar {
@@ -704,6 +699,7 @@ footer {
     background-size: cover;
     background-position: center;
     width: 100vw;
+    height: 100vh;
 }
 
 .about-container {
@@ -908,6 +904,7 @@ footer {
     background-size: cover;
     background-position: center;
     width: 100vw;
+    height: 100vh;
 }
 
 .proj-container {
@@ -936,6 +933,323 @@ footer {
     width: 550px;
     color: #3B404D;
 }
+
+/* Illustraçoes */
+.proj-ill {
+    background-image: url(../Assets/backgroundlightmode.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.gallery-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: auto;
+    height: 30vh;
+}
+
+.gallery-section h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    color: #333;
+    display: flex;
+    align-items: stretch;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    height: 10vh;
+    gap: 30px;
+}
+
+.thumb {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    background-color: white;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.position {
+    object-position: center;
+}
+
+.thumb:hover {
+    transform: scale(1.05);
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal-content {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    max-width: 35vw;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    margin: auto;
+    transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
+    cursor: zoom-in;
+    position: relative;
+    user-select: none;
+}
+
+.zoomed {
+    transform: scale(2);
+    cursor: grab;
+}
+
+.zoomed:active {
+    cursor: grabbing;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #ccc;
+    text-decoration: none;
+}
+
+
+/* Project Design */
+.proj-design {
+    background-image: url(../Assets/backgroundlightmode.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.gallery-sectionD {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.gallery-sectionD h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    align-items: flex-start;
+}
+
+.galleryD {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    height: 80vh;
+}
+
+.galleryD a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup img {
+    background-color: orange;
+    width: 75%;
+    height: 50%;
+}
+
+/* Projects page*/
+.projectsDB {
+    background-image: url(../Assets/backgroundlightmode.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Estilos da Secção Principal do Projeto (Hero Project) --- */
+.hero-project,
+.hero-layout {
+    padding: 80px 0 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-project h1 {
+    font-size: 3.5em;
+    color: #3B404D;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero-text-col {
+    flex: 1;
+    min-width: 50%;
+    min-height: auto;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #3B404D;
+}
+
+.project-media img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estilos dos Detalhes do Projeto --- */
+.project-details {
+    padding: 60px 0;
+}
+
+.details-intro {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.details-intro h2 {
+    font-size: 2.5em;
+    color: #3B404D;
+    margin-bottom: 15px;
+}
+
+.details-intro p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #3B404D;
+}
+
+.project-section h3 {
+    font-size: 2em;
+    color: #3B404D;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.project-section p {
+    margin-bottom: 20px;
+}
+
+.project-section img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.image-caption {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.gallery-grid img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Estilos da Secção de Projetos Relacionados --- */
+.related-projects {
+    background-color: #AAB8DB;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.related-projects h2 {
+    font-size: 2.5em;
+    color: #3B404D;
+    margin-bottom: 40px;
+}
+
+.project-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #3B404D;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.project-card h3 {
+    font-size: 1.5em;
+    margin: 15px 15px 5px;
+    color: #3B404D;
+}
+
+.project-card p {
+    font-size: 0.95em;
+    color: #3B404D;
+    padding: 0 15px 15px;
+    width: 800px;
+}
+
 
 @media (max-width: 1588px) {
     .central-container img {
