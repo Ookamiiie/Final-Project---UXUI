@@ -1,8 +1,14 @@
 @font-face {
+    font-family: 'AMORIA', serif;
+    font-style: normal;
+    font-weight: normal;
+    src: url(../assets/Fonts/AMORIA.woff2) format('woff2') url(../assets/Fonts/AMORIA.woff) format('woff') url(../assets/Fonts/AMORIA.ttf) format('ttf');
+}
+
+@font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: normal;
-    font-display: swap;
     src: url(../Assets/Fonts/Poppins-Regular.woff2) format('woff2') url(../Assets/Fonts/Poppins-Regular.woff) format('woff') url(../Assets/Fonts/Poppins-Regular.ttf) format('ttf');
 }
 
@@ -10,7 +16,6 @@
     font-family: 'Poppins';
     font-style: thin;
     font-weight: 100;
-    font-display: swap;
     src: url(../Assets/Fonts/Poppins-Thin.woff2) format('woff2') url(../Assets/Fonts/Poppins-Thin.woff) format('woff') url(../Assets/Fonts/Poppins-Thin.ttf) format('ttf');
 }
 
@@ -18,23 +23,13 @@
     font-family: 'Poppins';
     font-style: semi-bold;
     font-weight: 600;
-    font-display: swap;
     src: url(../Assets/Fonts/Poppins-SemiBold.woff2) format('woff2') url(../Assets/Fonts/Poppins-SemiBold.woff) format('woff') url(../Assets/Fonts/Poppins-SemiBold.ttf) format('ttf');
-}
-
-@font-face {
-    font-family: 'AMORIA', serif;
-    font-style: normal;
-    font-weight: normal;
-    font-display: swap;
-    src: url(../assets/Fonts/AMORIA.woff2) format('woff2') url(../assets/Fonts/AMORIA.woff) format('woff') url(../assets/Fonts/AMORIA.ttf) format('ttf');
 }
 
 @font-face {
     font-family: 'Poppins';
     font-style: light;
     font-weight: 200;
-    font-display: swap;
     src: url(../Assets/Fonts/Epilogue-Light.woff2) format('woff2') url(../Assets/Fonts/Epilogue-Light.woff) format('woff') url(../Assets/Fonts/Epilogue-Light.ttf) format('ttf');
 }
 
@@ -42,7 +37,6 @@
     font-family: 'Epilogue';
     font-style: bold;
     font-weight: 700;
-    font-display: swap;
     src: url(../Assets/Fonts/Epilogue-Bold.woff2) format('woff2') url(../Assets/Fonts/Epilogue-Bold.woff) format('woff') url(../Assets/Fonts/Epilogue-Bold.ttf) format('ttf');
 }
 
@@ -50,7 +44,6 @@
     font-family: 'Epilogue';
     font-style: normal;
     font-weight: normal;
-    font-display: swap;
     src: url(../assets/Fonts/Epilogue-Regular.woff2) format('woff2') url(../assets/Fonts/Epilogue-Regular.woff) format('woff') url(../assets/Fonts/Epilogue-Regular.ttf) format('ttf');
 }
 
