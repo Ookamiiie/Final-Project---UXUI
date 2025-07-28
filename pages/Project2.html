@@ -5,116 +5,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artblob - Meu Portfólio</title>
-    <!-- Importação da fonte Inter do Google Fonts para uma tipografia moderna e legível -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Link para o seu arquivo CSS personalizado -->
+
     <link rel="stylesheet" href="../Css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
 
 </head>
 
 <body class="projectsDB">
-    <!-- Cabeçalho da página: logótipo/nome e navegação principal -->
+
     <header>
         <nav class="navbar">
             <div class="container-fluid">
                 <h1 class="portfolio"><a href="../index.html">Port<br><span class="folio">folio</span></a></h1>
             </div>
-            <div class="page-indicators">
-                <div class="dot dot-blue"></div>
-                <div class="dot dot-orange"></div>
-                <div class="dot dot-green"></div>
-            </div>
+            <button id="darkModeToggle">🌙</button>
+            <a href="../index.html#proj-design" class="return-button">← Voltar</a>
         </nav>
+
     </header>
 
     <main class="projects-design">
-        <!-- Secção principal (Hero) do projeto: título, slogan e media principal -->
+
         <section class="hero-project">
             <div class="container hero-layout">
                 <div class="project-media">
-                    <img src="../Assets/Design/lumeaS1.jpg" alt="Imagem principal do projeto X">
+                    <img src="../Assets/Design/Artblobmainimage.webp" alt="Imagem principal do projeto Artblob"
+                        onclick="openModal(this.src)">
                 </div>
                 <div class="hero-text-col">
-                    <h1>Luméa</h1>
-                    <h2>Visão Geral do Projeto</h2>
-                    <p>Luméa é uma marca conceitual que celebra o bem-estar, a delicadeza e a conexão com os sentidos.
-                        Inspirada pela natureza, formas orgânicas e uma estética suave, o projeto propõe uma experiência
-                        visual serena, com uma paleta de cores neutras e tipografia refinada. O objetivo é traduzir
-                        leveza e autenticidade, criando uma identidade visual equilibrada, elegante e acolhedora.</p>
+                    <h2>Artblob</h2>
+                    <h3>Visão Geral do Projeto</h3>
+                    <p>ArtBlop é uma aplicação criada para facilitar a vida de artistas visuais, reunindo num só espaço
+                        a criação de portfólios, venda de arte e interação com o público. O projeto surgiu da
+                        necessidade de oferecer uma alternativa mais focada e intuitiva para quem quer mostrar e
+                        valorizar o seu trabalho artístico online sem a preocupação do AI para quem cria e para quem
+                        compra.</p>
                 </div>
             </div>
         </section>
-        <!-- Secção de detalhes do projeto: conteúdo textual e imagens de apoio -->
+
         <section class="project-details">
             <div class="container">
-                <!-- Bloco de conteúdo para o desafio e a solução -->
+
                 <div class="project-section">
                     <h3>O Desafio e a Solução</h3>
-                    <p> <b> Desafio:</b> Criar uma identidade visual desde o inicio, assim que eu decidi que tipo de
-                        marca
-                        eu queria criar trabalhei para que a marca transmitisse um ar delicado e aromas, além disso que
-                        apresentasse uma mistura do digital (loja) com criatividade.<br>
+                    <p> <b> Desafio:</b> Criar uma plataforma para ambos artistas (de todos tipos de media) e amantes
+                        das artes e da cultura.</p>
+                    <p><b> Solução:</b>Implementar varias formas de partilha de trabalho com uma explore page, foruns e
+                        até formas de publicar e partilhar em comunidades com posts/ publicações (inspirado no Reddit e
+                        Deviantart/ Artstation). Controlo do AI (uso de partilha de arte AI banida), etc.
                     </p>
-                    <p><b> Solução:</b>Através de uma paleta de cores suaves e naturais, formas inspiradas na botânica
-                        (como o
-                        lírio-do-vale) e uma tipografia refinada, desenvolveu-se uma linguagem visual coesa e memorável.
-                        O logotipo minimalista e orgânico reflete os valores da marca, enquanto o layout e os elementos
-                        gráficos reforçam a experiência serena e elegante que Luméa pretende proporcionar.
-                    </p>
-                    <img src="../Assets/Design/LumeaHifi_home.jpg" alt="Detalhe do projeto - wireframe ou rascunho">
-                    <p class="image-caption">Legenda: Um wireframe inicial mostrando a estrutura da interface e a
-                        navegação proposta.</p>
+                    <img src="../Assets/Design/appmap.webp" alt="Detalhe do projeto - Arquitetura da app"
+                        onclick="openModal(this.src)">
+                    <p class="image-caption">Legenda: Mapa da estrutura geral da app.</p>
                 </div>
 
-                <!-- Bloco de conteúdo para o processo de design -->
+
                 <div class="project-section">
                     <h3>Processo de Design</h3>
-                    <p>O desenvolvimento da identidade da Luméa passou por cinco etapas principais: pesquisa de
-                        referências e público-alvo, definição do conceito visual, criação de propostas (logotipo, paleta
-                        e tipografia), testes de aplicação e refinamento final.
-                        Cada decisão foi validada com base na coerência com os valores da marca, legibilidade e
-                        adaptabilidade em diferentes contextos.</p>
+                    <p></p>
                     <div class="gallery-grid">
-                        <img src="../Assets/Design/Imagens.png" alt="Outra imagem do projeto - moodboard">
-                        <img src="../Assets/Design/lumeacolor.jpg" alt="Outra imagem do projeto - colours">
-                        <img src="../Assets/Design/logo1.png" alt="Outra imagem do projeto - Logo inspo">
-                        <img src="../Assets/Design/logo2.png" alt="Outra imagem do projeto - Logo sketches">
-                        <img src="../Assets/Design/logo3.png"
-                            alt="Outra imagem do projeto - Logo sketches and icons used on moodboard">
-                        <img src="../Assets/Design/logofinal.png"
-                            alt="Outra imagem do projeto - Final logo with colour">
+                        <img src="../Assets/Design/persona1.webp" alt="Outra imagem do projeto - Persona 1"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/persona2.webp" alt="Outra imagem do projeto - Persona 2"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/artbloblofi.webp" alt="Outra imagem do projeto - Low-fi"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/artblobhifi.webp" alt="Outra imagem do projeto - High-fi"
+                            onclick="openModal(this.src)">
                     </div>
-                    <p class="image-caption">Legenda: Exemplos de etapas do processo de design, desde o moodboard e
-                        testes de cor até o protótipo final.</p>
+                    <p class="image-caption">Legenda: Exemplos de etapas do processo de design, personas, low-fi e
+                        high-fi.</p>
                 </div>
 
-                <!-- Bloco de conteúdo para resultados e aprendizados -->
+
                 <div class="project-section">
                     <h3>Resultados e Aprendizados</h3>
-                    <p>O projeto resultou numa identidade visual coesa, versátil e alinhada com os valores da marca,
-                        recebendo feedback positivo pela leveza estética e equilíbrio entre o natural e o criativo.
-
-                        O maior aprendizado foi a importância de traduzir emoções e sensações em elementos visuais
-                        claros, reforçando o impacto do design no posicionamento de uma marca.</p>
+                    <p> O projeto permitiu-me aplicar varias etapas do design digital, da pesquisa à prototipagem. Ao
+                        longo do processo, aprendi a importância de pensar na experiência do utilizador desde o início e
+                        equilibrar criatividade com funcionalidade.</p>
                 </div>
-
-                <!-- Você pode adicionar mais secções <div class="project-section"> conforme necessário para detalhar o seu projeto -->
+                <div id="imageModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img class="modal-content" id="modalimg">
+                </div>
 
             </div>
         </section>
 
-        <!-- Secção de projetos relacionados para incentivar a navegação no portfólio -->
         <section class="related-projects">
             <div class="container">
                 <h2>Outros Projetos Interessantes</h2>
                 <div class="project-grid">
                     <!-- Cartão de projeto relacionado 1 -->
-                    <a href="projeto-1.html" class="project-card">
-                        <img src="../Assets/Design/lumeaS1.jpg" alt="Miniatura do Projeto Luméa">
+                    <a href="./Project1.html" class="project-card">
+                        <img src="../Assets/Design/lumeaS1.webp" alt="Miniatura do Projeto Luméa">
                         <h3>Nome do Projeto 1</h3>
                         <p>Breve descrição do Projeto 1, destacando o seu tipo ou objetivo principal.</p>
                     </a>
@@ -124,13 +109,13 @@
         </section>
     </main>
 
-    <!-- Rodapé da página -->
+
     <footer class="text-end">
         <small>© Jessica Serra</small>
         <small id="year">2025</small>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="../js/projects.js"></script>
 </body>
 
 </html>

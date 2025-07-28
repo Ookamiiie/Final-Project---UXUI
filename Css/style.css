@@ -70,12 +70,54 @@ body {
     overflow-x: hidden;
 }
 
+/* Estilo para modo escuro */
+body.dark-mode {
+    background-image: url(../Assets/backgrounddarkmode.jpg);
+}
+
+body.dark-mode .pageHome,
+body.dark-mode .pageAbout,
+body.dark-mode .pageProjects,
+body.dark-mode .proj-ill,
+body.dark-mode .proj-design,
+body.dark-mode .projects-design {
+    background-image: url(../Assets/backgrounddarkmode.jpg);
+    background-size: cover;
+}
+
+
+body.dark-mode .proj-design .galleryD img::before {
+    background-color: #a282c581;
+}
+
+.dark-mode .central-container p,
+.dark-mode h1,
+.dark-mode p,
+.dark-mode .info-block,
+.dark-mode .proj-ill h2,
+.dark-mode .proj-design h2 {
+    color: #eee !important;
+}
+
+/* Estilizar o botão */
+#darkModeToggle {
+    position: fixed;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #444;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
 
 main {
     display: block;
     width: 100vw;
     height: auto;
-
 }
 
 .background-container {
@@ -85,7 +127,6 @@ main {
 }
 
 /* 1. Background image on the left */
-
 .bg-img {
     position: absolute;
     background-image: url(../Assets/initial_page_bckg_cropped.webp);
@@ -153,21 +194,21 @@ main {
     gap: 2rem;
     width: 32vw;
     z-index: 2;
-
 }
 
 .btn {
     background-color: var(--bubble-color, #F29B70) !important;
     color: #fff !important;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     transition: transform 0.1s ease, background-color 0.3s ease;
     cursor: pointer;
-    width: 15rem;
-    height: 3rem;
+    width: 16rem;
+    height: 3.5rem;
     position: relative;
     z-index: 3;
     top: 4rem;
+    border-radius: 12px;
 }
 
 .btn:active {
@@ -449,10 +490,16 @@ footer {
 }
 
 /* Show horizontal scroll container when active */
+
+.page {
+    /* width: 100vw; */
+    height: 100vh;
+}
+
 .scroll-horizontal {
     position: relative;
-    height: 1000vh;
     background: #f5f5f5;
+    height: 400vh;
 }
 
 .element-wrapper {
@@ -460,7 +507,6 @@ footer {
     height: 100%;
     width: 100vw;
     will-change: transform;
-
 }
 
 .sticky-wrapper {
@@ -470,20 +516,29 @@ footer {
     width: 100vw;
 }
 
+/* Prevent text selection during snapping */
+.element-wrapper.snapping {
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Add subtle animation for page transitions */
+.scroll {
+    transition: opacity 0.2s ease-in-out;
+}
+
 /* Home page bellow */
 .pageHome {
     background-image: url(../Assets/backgroundlightmode.webp);
     background-size: cover;
     background-position: center;
-    width: 100vw;
-    height: 100vh;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem 1rem;
+
     position: relative;
     width: 100vw;
     height: 10vh;
@@ -513,7 +568,6 @@ footer {
 
 .page-indicators {
     display: flex;
-    gap: 2rem;
     position: absolute;
     top: 2rem;
     left: 2rem;
@@ -527,7 +581,16 @@ footer {
     height: 40px;
     border-radius: 50%;
     transition: margin-left 1s ease-in-out;
-    /* Add transition for smooth movement */
+    cursor: pointer;
+    /* Make it clear they're clickable */
+}
+
+.dot:hover {
+    transform: scale(1.1);
+}
+
+.dot.active {
+    transform: scale(1.2);
 }
 
 .dot-blue {
@@ -698,8 +761,6 @@ footer {
     background-image: url(../Assets/backgroundlightmode.webp);
     background-size: cover;
     background-position: center;
-    width: 100vw;
-    height: 100vh;
 }
 
 .about-container {
@@ -719,24 +780,22 @@ footer {
     width: 100vw;
     height: 80vh;
     z-index: 0;
-    padding-top: 2%;
 }
 
 .abpanel img {
     width: 90%;
-    height: 100%;
+    height: 90%;
 }
 
 .mycontent {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     z-index: 1;
     width: fit-content;
     text-align: center;
     height: 70vh;
-    row-gap: 3rem;
+    row-gap: 6rem;
 }
 
 .divpai {
@@ -745,6 +804,7 @@ footer {
     justify-content: center;
     width: 50vw;
     height: 30vh;
+    flex-wrap: wrap;
 }
 
 .portrait {
@@ -754,14 +814,34 @@ footer {
 
 .portrait img {
     width: 100%;
-    height: auto;
-    bottom: 10%;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .info-block {
     text-align: left;
     font-family: "Poppins", sans-serif;
     color: #3B404D;
+}
+
+.icon-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.icon-links a img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.icon-links a:hover img {
+    transform: scale(1.1);
 }
 
 .myself {
@@ -774,8 +854,9 @@ footer {
 .button-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
     justify-content: center;
+    gap: 50px;
+    padding-top: 30px;
 }
 
 .cv-button {
@@ -903,8 +984,6 @@ footer {
     background-image: url(../Assets/backgroundlightmode.webp);
     background-size: cover;
     background-position: center;
-    width: 100vw;
-    height: 100vh;
 }
 
 .proj-container {
@@ -941,6 +1020,7 @@ footer {
     background-position: center;
     width: 100vw;
     height: 100vh;
+    border: #121212 5px;
 }
 
 .gallery-section {
@@ -956,7 +1036,8 @@ footer {
     font-size: 2rem;
     color: #333;
     display: flex;
-    align-items: stretch;
+    text-align: center;
+    justify-content: center;
 }
 
 .gallery {
@@ -1064,6 +1145,7 @@ footer {
     color: #333;
     text-align: center;
     align-items: flex-start;
+    padding-top: 5%;
 }
 
 .galleryD {
@@ -1071,7 +1153,7 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
-    height: 80vh;
+    height: 50vh;
 }
 
 .galleryD a {
@@ -1102,14 +1184,14 @@ footer {
 /* --- Estilos da Secção Principal do Projeto (Hero Project) --- */
 .hero-project,
 .hero-layout {
-    padding: 80px 0 10px;
+    padding: 40px 0 10px;
     text-align: center;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.hero-project h1 {
+.hero-project h2 {
     font-size: 3.5em;
     color: #3B404D;
     margin-bottom: 10px;
@@ -1165,6 +1247,7 @@ footer {
 
 .project-section p {
     margin-bottom: 20px;
+    color: #3B404D;
 }
 
 .project-section img {
@@ -1232,7 +1315,7 @@ footer {
 
 .project-card img {
     width: 100%;
-    height: 450px;
+    height: 350px;
     object-fit: cover;
     border-bottom: 1px solid #eee;
 }
@@ -1250,6 +1333,24 @@ footer {
     width: 800px;
 }
 
+#returnButton {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+body.dark-mode #returnButton {
+    background-color: #eee;
+    color: #121212;
+}
 
 @media (max-width: 1588px) {
     .central-container img {

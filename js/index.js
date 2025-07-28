@@ -56,17 +56,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Circles on the navbar
+// Function to scroll to a specific page
+function scrollToPage(pageId) {
+  const targetSection = document.getElementById(pageId);
+  if (targetSection) {
+    targetSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+}
+
+// Function to update indicators based on active page
 function updateIndicators(activePageId) {
+  // Remove active class from all dots
+  document.querySelectorAll(".dot").forEach((dot) => {
+    dot.classList.remove("active");
+  });
+
+  // Add active class to the corresponding dot
+  const activeDot = document.querySelector(`[data-page="${activePageId}"]`);
+  if (activeDot) {
+    activeDot.classList.add("active");
+  }
+
   // Update the navbar indicators based on the active page
   document.querySelectorAll(".navbar").forEach((navbar) => {
-    // Select all navbars
     const blueDot = navbar.querySelector(".dot-blue");
     const orangeDot = navbar.querySelector(".dot-orange");
     const greenDot = navbar.querySelector(".dot-green");
 
     if (!blueDot || !orangeDot || !greenDot) return;
 
-    // Reset all dots to their default positions (or a known state)
+    // Reset all dots to their default positions
     blueDot.style.order = "1";
     orangeDot.style.order = "2";
     greenDot.style.order = "3";
@@ -74,26 +96,37 @@ function updateIndicators(activePageId) {
     orangeDot.style.marginLeft = "0";
     greenDot.style.marginLeft = "0";
 
-    if (activePageId == "home") {
+    // Apply positioning based on active page
+    if (activePageId === "home") {
       orangeDot.style.marginLeft = "auto";
       greenDot.style.marginLeft = "2rem";
-    } else if (activePageId == "about") {
+    } else if (activePageId === "about") {
       orangeDot.style.marginLeft = "2rem";
       greenDot.style.marginLeft = "auto";
-    } else if (activePageId == "projects") {
+    } else if (activePageId === "projects") {
       orangeDot.style.marginLeft = "2rem";
       greenDot.style.marginLeft = "2rem";
     }
   });
 }
-// script to make the pages move the circles that represent them
+
+// Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize the indicators
+  // Add click event listeners to dots
+  document.querySelectorAll(".dot").forEach((dot) => {
+    dot.addEventListener("click", (e) => {
+      const pageId = e.target.getAttribute("data-page");
+      if (pageId) {
+        scrollToPage(pageId);
+      }
+    });
+  });
+
+  // Set up intersection observer for automatic indicator updates
   const sections = document.querySelectorAll(
     ".pageHome, .pageAbout, .pageProjects"
   );
-
-  const observer = new IntersectionObserver( // Observe sections for visibility changes
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -102,12 +135,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      root: null, // viewport
+      root: null,
       rootMargin: "0px",
-      threshold: 0.5, // 50% visible triggers update
+      threshold: 0.5,
     }
   );
-  sections.forEach((section) => observer.observe(section)); // Update the indicators on initial load
+
+  // Start observing all sections
+  sections.forEach((section) => observer.observe(section));
+
+  // Set initial state
+  updateIndicators("home");
 });
 
 // Button animations on about me page
@@ -193,6 +231,8 @@ document.getElementById("linkedinButton").addEventListener("click", () => {
 
 const scrollContainer = document.querySelector(".scroll-horizontal");
 const wrapper = document.querySelector(".element-wrapper");
+const pages = document.querySelectorAll(".page");
+const totalPages = pages.length;
 
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
@@ -200,13 +240,40 @@ window.addEventListener("scroll", () => {
   const containerHeight = scrollContainer.offsetHeight;
   const scrollDistance = containerHeight - window.innerHeight;
 
-  // only scroll when we're within the container
   if (scrollTop >= containerTop && scrollTop <= containerTop + scrollDistance) {
     const progress = (scrollTop - containerTop) / scrollDistance;
     const maxTranslate = wrapper.scrollWidth - window.innerWidth;
     wrapper.style.transform = `translateX(-${progress * maxTranslate}px)`;
   }
 });
+
+// Add immediate snapping on scroll end
+let scrollEndTimer;
+window.addEventListener("scroll", () => {
+  clearTimeout(scrollEndTimer);
+  scrollEndTimer = setTimeout(() => {
+    snapToPage();
+  }, 100);
+});
+
+function snapToPage() {
+  const scrollTop = window.scrollY;
+  const containerTop = scrollContainer.offsetTop;
+  const containerHeight = scrollContainer.offsetHeight;
+  const scrollDistance = containerHeight - window.innerHeight;
+
+  if (scrollTop >= containerTop && scrollTop <= containerTop + scrollDistance) {
+    const progress = (scrollTop - containerTop) / scrollDistance;
+    const nearestPage = Math.round(progress * (totalPages - 1));
+    const targetProgress = nearestPage / (totalPages - 1);
+    const targetScroll = containerTop + targetProgress * scrollDistance;
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    });
+  }
+}
 
 function openModal(imageSrc) {
   const modal = document.getElementById("imageModal");
@@ -287,6 +354,7 @@ function openModal(imageSrc) {
     }
   });
 }
+
 function closeModal() {
   const modal = document.getElementById("imageModal");
   const modalDesign = document.getElementById("modalDesign");
@@ -299,47 +367,49 @@ function closeModal() {
   modalDesign.style.cursor = "zoom-in";
 }
 
-let currentSlide = 0;
-let currentProject = "";
+const toggle = document.getElementById("darkModeToggle");
 
-function openModal(project) {
-  document.getElementById("myModal").style.display = "block";
-  currentProject = project;
-  currentSlide = 0;
-  updateSlides();
+// Load saved preference
+if (localStorage.getItem("dark-mode") === "enabled") {
+  document.body.classList.add("dark-mode");
+  toggle.textContent = "☀️";
 }
 
-function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-  const slides = document.querySelectorAll(".modal-slide");
-  slides.forEach((slide) => (slide.style.display = "none"));
-}
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
 
-function updateSlides() {
-  const allSlides = document.querySelectorAll(".modal-slide");
-  allSlides.forEach((slide) => (slide.style.display = "none"));
+  if (document.body.classList.contains("dark-mode")) {
+    toggle.textContent = "☀️";
+    localStorage.setItem("dark-mode", "enabled");
+  } else {
+    toggle.textContent = "🌙";
+    localStorage.setItem("dark-mode", "disabled");
+  }
+});
 
-  const projectSlides = document.querySelectorAll(
-    `.modal-slide.${currentProject}`
+const returnButton = document.getElementById("returnButton");
+
+// Helper: checks if user is in a project page
+function isProjectPageVisible() {
+  return (
+    document.querySelector(".proj-ill")?.style.display === "block" ||
+    document.querySelector(".proj-design")?.style.display === "block"
   );
-  if (projectSlides.length > 0) {
-    projectSlides[currentSlide].style.display = "block";
+}
+
+// Show or hide the return button depending on the visible section
+function updateReturnButtonVisibility() {
+  if (isProjectPageVisible()) {
+    returnButton.style.display = "block";
+  } else {
+    returnButton.style.display = "none";
   }
 }
 
-function nextSlide() {
-  const projectSlides = document.querySelectorAll(
-    `.modal-slide.${currentProject}`
-  );
-  if (currentSlide < projectSlides.length - 1) {
-    currentSlide++;
-    updateSlides();
+function scrollToSection() {
+  const target = document.querySelector(".proj-design");
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth" });
   }
 }
-
-function prevSlide() {
-  if (currentSlide > 0) {
-    currentSlide--;
-    updateSlides();
-  }
-}
+console.log(scrollToSection);
