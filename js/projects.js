@@ -1,5 +1,20 @@
 document.getElementById("year").textContent = new Date().getFullYear(); // Set the current year in the footer
 
+document.addEventListener("DOMContentLoaded", () => {
+  const dots = document.querySelectorAll(".dot");
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const targetPage = dot.dataset.page;
+      window.location.href = `../index.html#${targetPage}`;
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const indicators = document.querySelector(".page-indicators");
+  if (indicators) indicators.style.gap = "1rem";
+});
+
 function openModal(imageSrc) {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalimg");
@@ -137,4 +152,16 @@ function scrollToSection() {
     target.scrollIntoView({ behavior: "smooth" });
   }
 }
-console.log(scrollToSection);
+
+function toggleLanguage() {
+  const currentURL = window.location.href;
+
+  // Change PT → EN
+  if (currentURL.includes("/PT/")) {
+    window.location.href = currentURL.replace("/PT/", "/EN/");
+  }
+  // Change EN → PT
+  else if (currentURL.includes("/EN/")) {
+    window.location.href = currentURL.replace("/EN/", "/PT/");
+  }
+}

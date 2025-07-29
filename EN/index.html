@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Bloom</title>
+
+  <meta name="description"
+    content="Explore the creative portfolio of Jéssica Serra, featuring digital art and design projects.">
+  <meta name="keywords"
+    content="Digital Bloom, creative portfolio, digital art, graphic design, web development, Jéssica Serra, illustrations, digital drawing, design projects, UI/UX development, branding">
+  <meta name="author" content="Jéssica Serra">
+  <meta name="language" content="English">
+
+
+  <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-16x16.png" sizes="16x16" />
+
+
+  <link rel="stylesheet" href="../Css/style.css" />
+
+</head>
+
+<body>
+
+  <!-- Bellow is everything that sits on top of the wavy panel background -->
+  <main>
+    <!-- Background container with an image, an overlay and a wavy panel -->
+    <div class="background-container initial-page">
+      <div class="bg-img"></div>
+      <div class="bg-overlay"></div>
+      <div class="wavy-panel"></div>
+
+    </div>
+
+    <div class="content" id="initialpage">
+      <div class="squiggles"></div>
+      <nav class="nav-buttons"></nav>
+      <button class="modebtn" id="darkModeToggle" aria-label="Toggle dark mode">☀️</button>
+    </div>
+
+    <!-- These are the horizontally scrolling sections -->
+    <div class="scroll-horizontal">
+      <div class="sticky-wrapper">
+        <div class="element-wrapper">
+          <section class="scroll pageHome page" id="home">
+
+            <nav class="navbar">
+              <div class="container-fluid">
+                <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+              </div>
+              <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+              </div>
+            </nav>
+
+            <!-- Bellow is the home page content, central image with items and text around it-->
+            <div class="central-container">
+              <div class="homeimg">
+                <img src="../Assets/center_image.webp" alt="illustration with text bubbles around it"
+                  class="center-image">
+              </div>
+              <div class="textbbs">
+                <p class="bbtext1">Hi, I’m Jéssica!</p>
+                <p class="bbtext2">Here you’ll find illustrations <br> and creative projects.</p>
+                <p class="bbtext3">Everything I make has a little bit of me in it.</p>
+                <p class="bbtext4">Take a peek at what I’m creating!</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="scroll pageAbout page" id="about">
+            <nav class="navbar">
+              <div class="container-fluid">
+                <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+              </div>
+              <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+              </div>
+            </nav>
+            <div class="about-container">
+
+              <div class="abpanel">
+                <img src="../Assets/about_me_panel.png" alt="panel above the background">
+              </div>
+
+              <div class="mycontent">
+
+                <div class="divpai">
+                  <div class="portrait">
+                    <img src="../Assets/headME.webp" alt="portrait illustration">
+                  </div>
+
+                  <div class="info-wrapper">
+                    <div class="info-block">
+                      <p>Name: <br> Jéssica Serra</p>
+                      <p>Email: <br> jessicasofiaserra@gmail.com</p>
+                    </div>
+
+                    <div class="icon-links">
+                      <a href="https://github.com/Ookamiiie" target="_blank" aria-label="GitHub">
+                        <img src="../Assets/Vector.png" alt="GitHub">
+                      </a>
+                      <a href="https://alpachi.carrd.co" target="_blank" aria-label="Carrd">
+                        <img src="../Assets/carrd.png" alt="Carrd">
+                      </a>
+                      <a href="https://vgen.co/alpachitron" target="_blank" aria-label="VGen">
+                        <img src="../Assets/vgen.png" alt="VGen">
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="gap">
+                  <div class="myself">
+                    <p>Hiya! I’m Jéssica, a creative mind with a growing passion for technology, front-end development,
+                      and UI/UX design. <br>
+                      I’m currently learning HTML, CSS, and JavaScript, and I’m always excited to grow, build, and
+                      collaborate.</p>
+                    </p>
+                  </div>
+
+                  <div class="button-section">
+                    <button class="cv-button" id="cvButton">
+                      <span class="btn-text">Download my cv</span>
+                      <span class="btn-icon">&#10549;</span>
+                    </button>
+                    <button class="cv-button linkedin-button" id="linkedinButton">
+                      <span class="btn-text"> My LinkedIn</span>
+                      <span class="btn-icon icon-on-white">in</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="scroll pageProjects page" id="projects">
+            <nav class="navbar">
+              <div class="container-fluid">
+                <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+              </div>
+              <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+              </div>
+            </nav>
+
+            <div class="proj-container">
+              <div class="side-image">
+                <img src="../Assets/project_panels.webp" alt="illustrations of the sky and flowers">
+              </div>
+
+              <div class="proj-text">
+
+                <p>Here are some of my projects.</p>
+                <p>I create digital illustrations in various themes, but my main focus is the feminine and character
+                  design.</p>
+                <p>I also have some UI/UX projects that are part of this portfolio.</p>
+                <p>I share my art on other social platforms too, all the links are on my <a
+                    href="https://alpachi.carrd.co" class="carrd-link" target="_blank"
+                    rel="noopener noreferrer">Carrd</a>.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <section class="proj-ill">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+        </div>
+        <div class="page-indicators">
+          <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+          <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+          </div>
+          <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+          </div>
+        </div>
+      </nav>
+
+      <div class="gallery-section">
+        <h2>Illustrations</h2>
+        <div class="gallery">
+          <img src="../Assets/Illustrations/Dream.webp" alt="Artwork 1" class="thumb"
+            data-description="Inktober Day 1: Dream. Made digitally in PTS2." onclick="openModal(this)">
+
+          <img src="../Assets/Illustrations/Qinni.webp" alt="Artwork 2" class="thumb position"
+            data-description="Tribute to Qinni — her art was inspiring and unique. 2020. Made digitally in PTS2."
+            onclick="openModal(this)">
+          <img src="../Assets/Illustrations/Witch.webp" alt="Artwork 1" class="thumb position"
+            data-description="An ink witch. She’s a character I created. Made digitally in PTS2."
+            onclick="openModal(this)">
+          <img src="../Assets/Illustrations/mother.webp" alt="Artwork 2" class="thumb"
+            data-description="Inspired by planet Earth and Mother Nature. Made digitally in PTS2."
+            onclick="openModal(this)">
+          <img src="../Assets/Illustrations/Treasure.webp" alt="Artwork 1" class="thumb"
+            data-description="Inktober Day 9: Treasure. Made digitally in PTS2." onclick="openModal(this)">
+          <img src="../Assets/Illustrations/Brunout.webp" alt="Artwork 2" class="thumb position"
+            data-description="An illustration focused on the feelings of burnout. Made digitally in PTS2."
+            onclick="openModal(this)">
+          <img src="../Assets/Illustrations/Fairy.webp" alt="Artwork 1" class="thumb"
+            data-description="A bit of fantasy and landscape. Made digitally in PTS2." onclick="openModal(this)">
+          <img src="../Assets/Illustrations/2DReference.webp" alt="Artwork 2" class="thumb"
+            data-description="Created this character as a test. The idea was to imagine a game around her. Made digitally in PTS2."
+            onclick="openModal(this)">
+        </div>
+      </div>
+
+      <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-wrapper">
+          <img class="modal-content" id="modalimg">
+          <div class="modal-text" id="modaldesc"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-design" id="proj-design">
+
+      <nav class="navbar">
+        <div class="container-fluid">
+          <h1 class="portfolio"><a href="#">Port<br><span class="folio">folio</span></a></h1>
+        </div>
+        <div class="page-indicators">
+          <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+          <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+          </div>
+          <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+          </div>
+        </div>
+      </nav>
+
+      <div class="gallery-sectionD">
+        <h2>Design</h2>
+        <div class="galleryD">
+          <a href="Project1.html" class=" popup"><img src="../Assets/Design/lumeaS1.webp" alt="Luméa"></a>
+          <a href="Project2.html" class=" popup"><img src="../Assets/Design/Artblob.webp" alt="Artblob"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-end">
+      <small>© Jessica Serra</small>
+      <small id="year">2025</small>
+      <button class="lang-toggle" onclick="toggleLanguage()">PT</button>
+    </footer>
+
+  </main>
+
+  <script src="../js/index.js"></script>
+</body>
+
+</html>

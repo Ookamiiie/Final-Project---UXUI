@@ -4,7 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luméa - Meu Portfólio</title>
+    <title>Digital Bloom - Luméa</title>
+
+    <meta name="description"
+        content="Projeto Luméa criado no portfólio Digital Bloom, combinando arranjos florais, bem-estar e fragrâncias sensoriais.">
+    <meta name="keywords"
+        content="Luméa, arranjos florais, bem-estar, fragrâncias, experiências sensoriais, Projeto, Web development, Branding, Digital Bloom, Jéssica Serra">
+    <meta name="author" content="Jéssica Serra">
+    <meta name="language" content="Português">
+
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-16x16.png" sizes="16x16" />
 
     <link rel="stylesheet" href="../Css/style.css" />
 
@@ -15,10 +25,18 @@
     <header>
         <nav class="navbar">
             <div class="container-fluid">
-                <h1 class="portfolio"><a href="../index.html">Port<br><span class="folio">folio</span></a></h1>
+                <h1 class="portfolio"><a href="index.html">Port<br><span class="folio">folio</span></a></h1>
             </div>
-            <button id="darkModeToggle">🌙 </button>
-            <button onclick="scrollToSection()">← Voltar</button>
+
+            <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+            </div>
+
+            <button class="modebtn" id="darkModeToggle" aria-label="Toggle dark mode">☀️</button>
         </nav>
 
     </header>
@@ -33,7 +51,6 @@
                 </div>
                 <div class="hero-text-col">
                     <h2>Luméa</h2>
-                    <h3>Visão Geral do Projeto</h3>
                     <p>Luméa é uma marca conceitual que celebra o bem-estar, a delicadeza e a conexão com os sentidos.
                         Inspirada pela natureza, formas orgânicas e uma estética suave, o projeto propõe uma experiência
                         visual serena, com uma paleta de cores neutras e tipografia refinada. O objetivo é traduzir
@@ -112,21 +129,23 @@
 
                     <a href="./Project2.html" class="project-card">
                         <img src="../Assets/Design/Artblob.webp" alt="Miniatura do Projeto Artblob">
-                        <h3>Nome do Projeto 2</h3>
-                        <p>ArtBlop é uma aplicação pensada para artistas e apreciadores de varias medias de arte. Para
-                            os que desejam apresentar o seu trabalho, comprar ou vender criações e construir uma
+                        <h4>Artblob</h4>
+                        <p>ArtBlop é uma aplicação pensada para artistas e apreciadores de
+                            varias medias de arte. Para os que desejam apresentar o seu trabalho, comprar ou vender
+                            criações e construir uma
                             comunidade. </p>
                     </a>
+
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Rodapé da página -->
     <footer class="text-end">
         <small>© Jessica Serra</small>
         <small id="year">2025</small>
+        <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     </footer>
 
     <script src="../js/projects.js"></script>

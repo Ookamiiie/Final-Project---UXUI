@@ -83,29 +83,57 @@ body.dark-mode .proj-design .galleryD img::before {
     background-color: #a282c581;
 }
 
+.dark-mode .project-grid p {
+    color: #3B404D !important;
+}
+
 .dark-mode .central-container p,
 .dark-mode h1,
 .dark-mode p,
 .dark-mode .info-block,
 .dark-mode .proj-ill h2,
-.dark-mode .proj-design h2 {
+.dark-mode .proj-design h2,
+.dark-mode .projects-design h2,
+.dark-mode .projects-design h3 {
     color: #eee !important;
 }
+
+
 
 /* Estilizar o botão */
 #darkModeToggle {
     position: fixed;
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #444;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 999;
+    bottom: 25px;
+    left: 25px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
-    align-self: center;
+    align-items: center;
     justify-content: center;
+    cursor: pointer;
+    background-color: rgba(169, 183, 228, 0.8);
+    border: 1px solid rgba(33, 26, 75, 0.1);
+    color: #333;
+    font-size: 1.6rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
+
+#darkModeToggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+#darkModeToggle.dark-mode-active {
+    background-color: rgba(47, 47, 75, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 
 main {
     display: block;
@@ -472,16 +500,6 @@ main {
     }
 }
 
-/* Footer needs to stay stuck in place and is the same for all pages */
-footer {
-    display: flex;
-    color: #888;
-    gap: 2rem;
-    right: 2rem;
-    bottom: 1rem;
-    position: fixed
-}
-
 /* Show horizontal scroll container when active */
 
 .page {
@@ -531,7 +549,6 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     position: relative;
     width: 100vw;
     height: 10vh;
@@ -539,7 +556,7 @@ footer {
 
 .portfolio {
     position: absolute;
-    top: 2rem;
+    top: 1rem;
     right: 5rem;
 }
 
@@ -570,9 +587,15 @@ footer {
 }
 
 .dot {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: margin-left 1s ease-in-out;
     cursor: pointer;
     /* Make it clear they're clickable */
@@ -582,13 +605,20 @@ footer {
     transform: scale(1.1);
 }
 
-.dot.active {
-    transform: scale(1.2);
-}
-
 .dot-blue {
     background-color: #AAB8DB;
     order: 1;
+}
+
+.dot-blue img {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+/* Rotate Home icon when Home page is active */
+.dot-blue:hover img,
+.dot-blue.active img {
+    transform: rotate(-135deg);
 }
 
 .dot-orange {
@@ -596,9 +626,69 @@ footer {
     order: 2;
 }
 
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* About & Projects default state */
+.dot-orange img {
+    transition: transform 0.3s ease;
+}
+
+/* Pulse on hover or active */
+.dot-orange:hover img,
+.dot-orange.active img {
+    animation: pulse 0.6s ease;
+}
+
 .dot-green {
     background-color: #9FC280;
     order: 3;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        transform: rotate(4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Project icon default */
+.dot-green img {
+    transition: transform 0.3s ease;
+}
+
+/* Shake on hover or active */
+.dot-green:hover img,
+.dot-green.active img {
+    animation: shake 0.5s ease;
 }
 
 /* Home page bellow*/
@@ -637,117 +727,27 @@ footer {
 }
 
 .bbtext1 {
-    top: 17%;
+    top: 15%;
     left: 17%;
 }
 
 .bbtext2 {
-    top: 27%;
+    top: 25%;
     right: 26%;
     transform: translateX(50%);
 }
 
 .bbtext3 {
     bottom: 26%;
-    left: 16%;
+    left: 15%;
     transform: translateY(-50%);
 }
 
 .bbtext4 {
-    bottom: 20%;
-    right: 21%;
+    bottom: 19%;
+    right: 20%;
     transform: translateY(-50%);
 }
-
-
-/* .central-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-}
-
-/* central image */
-/* .center-image {
-    margin-top: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.FBme {
-    width: 20vw;
-    height: auto;
-}
-
-.item {
-    position: absolute;
-    width: 30vw;
-    z-index: 2;
-}
-
-.bbtext {
-    z-index: 4;
-    font-size: 16px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-/* Asymmetrical positioning */
-/* .top-left {
-    left: 10%;
-    transform: rotate(-6deg);
-}
-
-.top-right {
-    top: 12%;
-    right: 5%;
-    transform: rotate(4deg);
-}
-
-.bottom-left {
-    bottom: 40%;
-    left: 5%;
-    transform: rotate(2deg);
-}
-
-.bottom-right {
-    bottom: 35%;
-    right: 10%;
-    transform: rotate(-5deg);
-}
-
-.arrow-topleft {
-    position: absolute;
-    top: 100%;
-    left: 80%;
-}
-
-.arrow-topright {
-    position: absolute;
-    top: 100%;
-    right: 100%;
-}
-
-.arrow-bottomleft {
-    position: absolute;
-    top: 30%;
-    left: 95%;
-    transform: rotate(-20deg);
-}
-
-.arrow-bottomright {
-    position: absolute;
-    bottom: 90%;
-    right: 100%;
-    transform: rotate(-20deg);
-}
-
-.arrow {
-    height: 50px;
-    z-index: 3;
-} */
 
 /* About page bellow */
 .pageAbout {
@@ -980,12 +980,11 @@ footer {
 }
 
 .proj-container {
-    width: 100vw;
     height: 80vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     padding-top: 5%;
 }
@@ -1006,6 +1005,20 @@ footer {
     color: #3B404D;
 }
 
+.carrd-link {
+    color: #b48cc8;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.carrd-link:hover {
+    color: #9a7ec4;
+    border-bottom: 2px solid #9a7ec4;
+    text-shadow: 0px 0px 6px rgba(194, 153, 255, 0.6);
+}
+
 /* Illustraçoes */
 .proj-ill {
     background-image: url(../Assets/backgroundlightmode.webp);
@@ -1013,7 +1026,6 @@ footer {
     background-position: center;
     width: 100vw;
     height: 100vh;
-    border: #121212 5px;
 }
 
 .gallery-section {
@@ -1030,7 +1042,7 @@ footer {
     color: #333;
     display: flex;
     text-align: center;
-    justify-content: center;
+    padding-left: 50px;
 }
 
 .gallery {
@@ -1074,6 +1086,22 @@ footer {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: none;
+}
+
+.modal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
 
 .modal-content {
@@ -1090,6 +1118,22 @@ footer {
     cursor: zoom-in;
     position: relative;
     user-select: none;
+}
+
+.modal-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 80vw;
+    max-height: 90vh;
+}
+
+.modal-text {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.4;
+    max-width: 300px;
+    word-wrap: break-word;
 }
 
 .zoomed {
@@ -1136,9 +1180,9 @@ footer {
     font-family: "Poppins", sans-serif;
     font-size: 2rem;
     color: #333;
-    text-align: center;
-    align-items: flex-start;
+
     padding-top: 5%;
+    padding-left: 6%;
 }
 
 .galleryD {
@@ -1313,7 +1357,7 @@ footer {
     border-bottom: 1px solid #eee;
 }
 
-.project-card h3 {
+.project-card h4 {
     font-size: 1.5em;
     margin: 15px 15px 5px;
     color: #3B404D;
@@ -1326,26 +1370,43 @@ footer {
     width: 800px;
 }
 
-#returnButton {
+/* Footer needs to stay stuck in place and is the same for all pages */
+footer {
+    display: flex;
+    color: #888;
+    gap: 2rem;
+    right: 2rem;
+    bottom: 1rem;
     position: fixed;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #444;
+}
+
+.lang-toggle {
+    background: #ff69b4;
     color: white;
     border: none;
     border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
     cursor: pointer;
-    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-body.dark-mode #returnButton {
-    background-color: #eee;
-    color: #121212;
+.lang-toggle:hover {
+    background: #ff85c1;
+    transform: scale(1.05);
 }
 
+
+/* Responsiveness bellow */
 @media (max-width: 1588px) {
+    .wavy-panel {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-self: end;
+        justify-self: end;
+    }
+
     .central-container img {
         width: 80vw;
     }
@@ -1377,7 +1438,6 @@ body.dark-mode #returnButton {
 }
 
 @media screen and (max-width: 1450px) and (min-width: 1170px) {
-
     .navbar {
         padding: 1rem 2rem;
     }
@@ -1408,10 +1468,26 @@ body.dark-mode #returnButton {
     }
 }
 
-@media screen and (max-width:1169px) {
+@media (max-width: 1440px) {
 
-    .page-indicators {
-        width: 70vw;
+    .bg-img,
+    .bg-overlay {
+        width: 50%;
+    }
+
+    .squiggles {
+        width: 45vw;
+        height: auto;
+    }
+
+    .nav-buttons {
+        width: 30vw;
+        gap: 1.5rem;
+    }
+
+    .btn {
+        width: 14rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -1477,8 +1553,19 @@ body.dark-mode #returnButton {
         width: 90%;
         align-items: flex-end;
     }
+
+    /* Improve gallery for tablets */
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .galleryD {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
 }
 
+/* Mobile landscape and small tablets */
 @media (max-width: 768px) {
     .homeimg img {
         width: 90vw;
@@ -1512,20 +1599,146 @@ body.dark-mode #returnButton {
         right: 10%;
         transform: none;
     }
+
+    /* Improve navigation for mobile */
+    .portfolio a {
+        font-size: 2.5rem;
+    }
+
+    .portfolio {
+        right: 2rem;
+    }
+
+    .page-indicators {
+        left: 1rem;
+        top: 1rem;
+    }
+
+    .dot {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    /* Improve about section for mobile */
+    .divpai {
+        width: 90vw;
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+    }
+
+    .portrait {
+        width: 40vw;
+        max-width: 200px;
+    }
+
+    .myself {
+        max-width: 90vw;
+        padding: 0 20px;
+    }
+
+    .button-section {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Improve project text for mobile */
+    .proj-text p {
+        width: auto;
+        max-width: 90vw;
+        font-size: 18px;
+        padding: 15px 20px;
+    }
+
+    /* Improve gallery for mobile */
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .gallery-section h2 {
+        padding-left: 20px;
+        font-size: 1.8rem;
+    }
+
+    .galleryD {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .gallery-sectionD h2 {
+        padding-left: 20px;
+        font-size: 1.8rem;
+    }
+
+    /* Improve modal for mobile */
+    .modal-wrapper {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .close {
+        top: 10px;
+        right: 15px;
+        font-size: 40px;
+    }
 }
 
+/* Small mobile devices */
 @media (max-width: 600px) {
     .cv-button {
         min-width: 180px;
-        padding: 14px 28px;
+        padding: 14px 20px;
         font-size: 15px;
     }
 
-    .button-icon {
+    .btn-icon {
         font-size: 16px;
+    }
+
+    /* Improve navigation buttons for small mobile */
+    .btn {
+        width: 10rem;
+        height: 2.2rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-buttons {
+        gap: 1rem;
+    }
+
+    /* Improve dark mode toggle position */
+    #darkModeToggle {
+        bottom: 15px;
+        left: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    /* Improve footer for mobile */
+    footer {
+        right: 1rem;
+        bottom: 0.5rem;
+        gap: 1rem;
+    }
+
+    .lang-toggle {
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }
 
+/* Very small mobile devices */
 @media (max-width: 480px) {
     .homeimg img {
         width: 100vw;
@@ -1560,5 +1773,141 @@ body.dark-mode #returnButton {
         top: 55%;
         left: 10%;
         bottom: auto;
+    }
+
+    /* Improve navigation for very small screens */
+    .portfolio a {
+        font-size: 2rem;
+    }
+
+    .portfolio {
+        right: 1rem;
+        top: 0.5rem;
+    }
+
+    .page-indicators {
+        left: 0.5rem;
+        top: 0.5rem;
+    }
+
+    .dot {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* Improve buttons for very small screens */
+    .btn {
+        width: 8rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+
+    /* Improve about section for very small screens */
+    .portrait {
+        width: 50vw;
+        max-width: 150px;
+    }
+
+    .mycontent {
+        row-gap: 3rem;
+    }
+
+    .cv-button {
+        min-width: 160px;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    /* Improve gallery for very small screens */
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .thumb {
+        height: 200px;
+    }
+
+    .gallery-section h2,
+    .gallery-sectionD h2 {
+        font-size: 1.5rem;
+        padding-left: 15px;
+    }
+
+    /* Disable horizontal scroll on very small screens */
+    .scroll-horizontal {
+        height: auto;
+    }
+
+    .element-wrapper {
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .sticky-wrapper {
+        position: relative;
+    }
+
+    .page {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+/* Landscape orientation improvements */
+@media (max-height: 500px) and (orientation: landscape) {
+    .content {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .squiggles {
+        height: 30vh;
+    }
+
+    .nav-buttons {
+        gap: 1rem;
+    }
+
+    .btn {
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .central-container p {
+        font-size: 0.8rem;
+    }
+
+    .mycontent {
+        row-gap: 2rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    .thumb,
+    .popup img,
+    .homeimg img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .scroll {
+        scroll-behavior: auto;
+    }
+
+    html {
+        scroll-behavior: auto;
     }
 }

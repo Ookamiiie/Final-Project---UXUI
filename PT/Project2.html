@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bloom - Artblob</title>
+
+    <meta name="description"
+        content="ArtBlop, plataforma artística desenvolvida pela Digital Bloom para conectar artistas e fãs.">
+    <meta name="keywords"
+        content="ArtBlop, plataforma artística, portfólio, vendas de arte, comunidade artística, Projeto, Web development, Branding, Digital Bloom, Jéssica Serra">
+    <meta name="author" content="Jéssica Serra">
+    <meta name="language" content="Português">
+
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-16x16.png" sizes="16x16" />
+
+    <link rel="stylesheet" href="../Css/style.css" />
+
+
+</head>
+
+<body class="projectsDB">
+
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid">
+                <h1 class="portfolio"><a href="index.html">Port<br><span class="folio">folio</span></a></h1>
+            </div>
+
+            <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+            </div>
+            <button class="modebtn" id="darkModeToggle" aria-label="Toggle dark mode">☀️</button>
+        </nav>
+
+    </header>
+
+    <main class="projects-design">
+
+        <section class="hero-project">
+            <div class="container hero-layout">
+                <div class="project-media">
+                    <img src="../Assets/Design/Artblobmainimage.webp" alt="Imagem principal do projeto Artblob"
+                        onclick="openModal(this.src)">
+                </div>
+                <div class="hero-text-col">
+                    <h2>Artblob</h2>
+                    <h3>Visão Geral do Projeto</h3>
+                    <p>ArtBlop é uma aplicação criada para facilitar a vida de artistas visuais, reunindo num só espaço
+                        a criação de portfólios, venda de arte e interação com o público. O projeto surgiu da
+                        necessidade de oferecer uma alternativa mais focada e intuitiva para quem quer mostrar e
+                        valorizar o seu trabalho artístico online sem a preocupação do AI para quem cria e para quem
+                        compra.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+
+                <div class="project-section">
+                    <h3>O Desafio e a Solução</h3>
+                    <p> <b> Desafio:</b> Criar uma plataforma para ambos artistas (de todos tipos de media) e amantes
+                        das artes e da cultura.</p>
+                    <p><b> Solução:</b>Implementar varias formas de partilha de trabalho com uma explore page, foruns e
+                        até formas de publicar e partilhar em comunidades com posts/ publicações (inspirado no Reddit e
+                        Deviantart/ Artstation). Controlo do AI (uso de partilha de arte AI banida), etc.
+                    </p>
+                    <img src="../Assets/Design/appmap.webp" alt="Detalhe do projeto - Arquitetura da app"
+                        onclick="openModal(this.src)">
+                    <p class="image-caption">Legenda: Mapa da estrutura geral da app.</p>
+                </div>
+
+
+                <div class="project-section">
+                    <h3>Processo de Design</h3>
+                    <p></p>
+                    <div class="gallery-grid">
+                        <img src="../Assets/Design/persona1.webp" alt="Outra imagem do projeto - Persona 1"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/persona2.webp" alt="Outra imagem do projeto - Persona 2"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/artbloblofi.webp" alt="Outra imagem do projeto - Low-fi"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/artblobhifi.webp" alt="Outra imagem do projeto - High-fi"
+                            onclick="openModal(this.src)">
+                    </div>
+                    <p class="image-caption">Legenda: Exemplos de etapas do processo de design, personas, low-fi e
+                        high-fi.</p>
+                </div>
+
+
+                <div class="project-section">
+                    <h3>Resultados e Aprendizados</h3>
+                    <p> O projeto permitiu-me aplicar varias etapas do design digital, da pesquisa à prototipagem. Ao
+                        longo do processo, aprendi a importância de pensar na experiência do utilizador desde o início e
+                        equilibrar criatividade com funcionalidade.</p>
+                </div>
+                <div id="imageModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img class="modal-content" id="modalimg">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="related-projects">
+            <div class="container">
+                <h2>Outros Projetos Interessantes</h2>
+                <div class="project-grid">
+                    <a href="./Project1.html" class="project-card">
+                        <img src="../Assets/Design/lumeaS1.webp" alt="Miniatura do Projeto Luméa">
+                        <h4>Luméa</h4>
+                        <p>Marca que une natureza e bem-estar, oferecendo experiências sensoriais através de
+                            arranjos florais, fragrâncias e terapias.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="text-end">
+        <small>© Jessica Serra</small>
+        <small id="year">2025</small>
+        <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+    </footer>
+
+    <script src="../js/projects.js"></script>
+</body>
+
+</html>

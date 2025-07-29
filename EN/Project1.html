@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bloom - Luméa</title>
+
+    <meta name="description"
+        content="Luméa project created in the Digital Bloom portfolio, combining floral arrangements, wellness, and sensory fragrances." />
+    <meta name="keywords"
+        content="Luméa, floral arrangements, wellness, fragrances, sensory experiences, Project, Web development, Branding, Digital Bloom, Jéssica Serra" />
+    <meta name="author" content="Jéssica Serra" />
+    <meta name="language" content="English" />
+
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-16x16.png" sizes="16x16" />
+
+
+    <link rel="stylesheet" href="../Css/style.css" />
+
+</head>
+
+<body class="projectsDB">
+
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid">
+                <h1 class="portfolio"><a href="../index.html">Port<br><span class="folio">folio</span></a></h1>
+            </div>
+
+            <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+            </div>
+
+            <button class="modebtn" id="darkModeToggle" aria-label="Toggle dark mode">☀️</button>
+        </nav>
+
+    </header>
+
+    <main class="projects-design">
+
+        <section class="hero-project">
+            <div class="container hero-layout">
+                <div class="project-media">
+                    <img src="../Assets/Design/lumeaS1.webp" alt="Imagem principal do projeto Luméa"
+                        onclick="openModal(this.src)">
+                </div>
+                <div class="hero-text-col">
+                    <h2>Luméa</h2>
+                    <p>Luméa is a conceptual brand celebrating wellness, delicacy, and connection with the senses.
+                        Inspired by nature, organic shapes, and a soft aesthetic, the project proposes a serene visual
+                        experience with a neutral color palette and refined typography. The goal is to convey lightness
+                        and authenticity, creating a balanced, elegant, and welcoming visual identity.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+
+                <div class="project-section">
+                    <h3>The Challenge and the Solution</h3>
+                    <p><strong>Challenge:</strong> To create a visual identity from scratch. Once I decided the type of
+                        brand I wanted to create, I worked so the brand would convey a delicate aura and aromas, while
+                        also presenting a blend of digital (online store) and creativity.<br /></p>
+                    <p><strong>Solution:</strong> Through a palette of soft, natural colors, shapes inspired by botany
+                        (such as the lily of the valley), and refined typography, a cohesive and memorable visual
+                        language was developed. The minimalist and organic logo reflects the brand’s values, while the
+                        layout and graphic elements reinforce the serene and elegant experience Luméa aims to provide.
+                    </p>
+                    <img src="../Assets/Design/LumeaHifi_home.webp" alt="Detalhe do projeto - high-fi"
+                        onclick="openModal(this.src)">
+                    <p class="image-caption">Caption: An initial wireframe showing the interface structure and proposed
+                        navigation.</p>
+                </div>
+
+                <div class="project-section">
+                    <h3>Design Process</h3>
+                    <p>
+                        The development of Luméa’s identity went through five main stages: research of references and
+                        target audience, definition of the visual concept, creation of proposals (logo, palette, and
+                        typography), application testing, and final refinement.
+                        Every decision was validated based on consistency with the brand values, legibility, and
+                        adaptability in different contexts.</p>
+                    <div class="gallery-grid">
+                        <img src="../Assets/Design/Imagens.webp" alt="Outra imagem do projeto - moodboard"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/lumeacolor.webp" alt="Outra imagem do projeto - colours"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/lumeatipo.webp" alt="Outra imagem do projeto - typography"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/logo2.webp" alt="Outra imagem do projeto - Logo sketches"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/logo3.webp"
+                            alt="Outra imagem do projeto - Logo sketches and icons used on moodboard"
+                            onclick="openModal(this.src)">
+                        <img src="../Assets/Design/logofinal.webp"
+                            alt="Outra imagem do projeto - Final logo with colour" onclick="openModal(this.src)">
+                    </div>
+                    <p class="image-caption">Caption: Examples of design process stages, from moodboard and color tests
+                        to the final prototype.</p>
+                </div>
+
+                <div class="project-section">
+                    <h3>Results and Learnings</h3>
+                    <p>
+                        The project resulted in a cohesive, versatile visual identity aligned with the brand’s values,
+                        receiving positive feedback for its aesthetic lightness and balance between natural and creative
+                        elements.
+                        The biggest lesson was the importance of translating emotions and sensations into clear visual
+                        elements, reinforcing design’s impact on brand positioning.
+                    </p>
+                </div>
+                <div id="imageModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img class="modal-content" id="modalimg">
+                </div>
+            </div>
+        </section>
+
+        <section class="related-projects">
+            <div class="container">
+                <h2>Other Interesting Projects</h2>
+                <div class="project-grid">
+
+                    <a href="./Project2.html" class="project-card">
+                        <img src="../Assets/Design/Artblob.webp" alt="Miniatura do Projeto Artblob">
+                        <h4>Artblob</h4>
+                        <p>
+                            ArtBlop is an app designed for artists and art lovers of various media. For those wishing to
+                            showcase their work, buy or sell creations, and build a community.
+                        </p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-end">
+        <small>© Jessica Serra</small>
+        <small id="year">2025</small>
+        <button class="lang-toggle" onclick="toggleLanguage()">PT</button>
+    </footer>
+
+    <script src="../js/projects.js"></script>
+</body>
+
+</html>

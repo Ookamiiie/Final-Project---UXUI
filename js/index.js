@@ -111,15 +111,13 @@ function updateIndicators(activePageId) {
 }
 
 // Initialize everything when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  // Add click event listeners to dots
-  document.querySelectorAll(".dot").forEach((dot) => {
-    dot.addEventListener("click", (e) => {
-      const pageId = e.target.getAttribute("data-page");
-      if (pageId) {
-        scrollToPage(pageId);
-      }
-    });
+document.querySelectorAll(".dot").forEach((dot) => {
+  dot.addEventListener("click", (e) => {
+    console.log("Clicked dot:", e.currentTarget);
+    const pageId = e.currentTarget.getAttribute("data-page");
+    if (pageId) {
+      scrollToPage(pageId);
+    }
   });
 
   // Set up intersection observer for automatic indicator updates
@@ -275,13 +273,16 @@ function snapToPage() {
   }
 }
 
-function openModal(imageSrc) {
+function openModal(imageElement) {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalimg");
+  const modalDesc = document.getElementById("modaldesc");
 
   modal.style.display = "flex";
-  modalImg.src = imageSrc;
-
+  modalImg.src = imageElement.src;
+  modalDesc.textContent = imageElement.getAttribute("data-description") || "";
+  // modal.style.backgroundImage = `url(${imageElement.src})`;
+  // if I use this, the image selected will become the background of the modal.
   // Reset everything
   modalImg.classList.remove("zoomed");
   modalImg.style.transform = "scale(1)";
@@ -295,7 +296,6 @@ function openModal(imageSrc) {
     currentY = 0;
   let moved = false;
 
-  // Mousedown: Start drag
   modalImg.onmousedown = function (e) {
     if (!isZoomed) return;
     isDragging = true;
@@ -306,7 +306,6 @@ function openModal(imageSrc) {
     e.preventDefault();
   };
 
-  // Mousemove: Do drag
   document.onmousemove = function (e) {
     if (!isDragging || !isZoomed) return;
     currentX = e.clientX - startX;
@@ -316,7 +315,6 @@ function openModal(imageSrc) {
     moved = true;
   };
 
-  // Mouseup: End drag
   document.onmouseup = function () {
     if (isDragging) {
       isDragging = false;
@@ -324,11 +322,10 @@ function openModal(imageSrc) {
     }
   };
 
-  // Click to toggle zoom (only if not dragged)
   modalImg.onclick = function (e) {
-    e.stopPropagation(); // prevent closing modal
+    e.stopPropagation();
     if (moved) {
-      moved = false; // prevent zoom toggle if dragged
+      moved = false;
       return;
     }
 
@@ -346,70 +343,63 @@ function openModal(imageSrc) {
     }
   };
 
-  // Allow clicking outside image to close modal
   document.getElementById("imageModal").addEventListener("click", function (e) {
-    const modalDesign = document.getElementById("modalDesign");
-    if (!modalDesign.contains(e.target)) {
+    if (!modalImg.contains(e.target) && !modalDesc.contains(e.target)) {
       closeModal();
     }
   });
 }
 
 function closeModal() {
-  const modal = document.getElementById("imageModal");
-  const modalDesign = document.getElementById("modalDesign");
-
-  modal.style.display = "none";
-  modalDesign.classList.remove("zoomed");
-  modalDesign.style.transform = "scale(1)";
-  modalDesign.style.left = "0px";
-  modalDesign.style.top = "0px";
-  modalDesign.style.cursor = "zoom-in";
+  document.getElementById("imageModal").style.display = "none";
 }
 
 const toggle = document.getElementById("darkModeToggle");
+const body = document.body;
 
-// Load saved preference
-if (localStorage.getItem("dark-mode") === "enabled") {
-  document.body.classList.add("dark-mode");
-  toggle.textContent = "☀️";
-}
-
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-
-  if (document.body.classList.contains("dark-mode")) {
-    toggle.textContent = "☀️";
+// Função para aplicar/remover o dark mode e atualizar o botão
+function applyDarkMode(isDarkModeEnabled) {
+  if (isDarkModeEnabled) {
+    body.classList.add("dark-mode");
+    toggle.classList.add("dark-mode-active"); // Aplica o estilo do botão para dark mode
+    toggle.textContent = "☀️"; // Sol, para voltar ao light mode
     localStorage.setItem("dark-mode", "enabled");
   } else {
-    toggle.textContent = "🌙";
+    body.classList.remove("dark-mode");
+    toggle.classList.remove("dark-mode-active"); // Remove o estilo do botão de dark mode
+    toggle.textContent = "🌙"; // Lua, para ir para o dark mode
     localStorage.setItem("dark-mode", "disabled");
   }
-});
-
-const returnButton = document.getElementById("returnButton");
-
-// Helper: checks if user is in a project page
-function isProjectPageVisible() {
-  return (
-    document.querySelector(".proj-ill")?.style.display === "block" ||
-    document.querySelector(".proj-design")?.style.display === "block"
-  );
 }
 
-// Show or hide the return button depending on the visible section
-function updateReturnButtonVisibility() {
-  if (isProjectPageVisible()) {
-    returnButton.style.display = "block";
-  } else {
-    returnButton.style.display = "none";
+// Carrega a preferência salva ou a preferência do sistema
+const prefersDarkMode =
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
+const savedPreference = localStorage.getItem("dark-mode");
+
+if (savedPreference === "enabled") {
+  applyDarkMode(true);
+} else if (savedPreference === "disabled") {
+  applyDarkMode(false);
+} else if (prefersDarkMode) {
+  applyDarkMode(true);
+} else {
+  applyDarkMode(false);
+}
+
+function toggleLanguage() {
+  // Save scroll position (horizontal and vertical)
+  localStorage.setItem("scrollX", window.scrollX);
+  localStorage.setItem("scrollY", window.scrollY);
+
+  let path = window.location.pathname;
+
+  if (path.includes("/PT/")) {
+    path = path.replace("/PT/", "/EN/");
+  } else if (path.includes("/EN/")) {
+    path = path.replace("/EN/", "/PT/");
   }
-}
 
-function scrollToSection() {
-  const target = document.querySelector(".proj-design");
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth" });
-  }
+  window.location.pathname = path;
 }
-console.log(scrollToSection);

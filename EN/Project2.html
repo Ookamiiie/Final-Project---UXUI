@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artblob - Meu Portfólio</title>
+    <title>Digital Bloom - Artblob</title>
+
+    <meta name="description"
+        content="ArtBlop, plataforma artística desenvolvida pela Digital Bloom para conectar artistas e fãs.">
+    <meta name="keywords"
+        content="ArtBlop, plataforma artística, portfólio, vendas de arte, comunidade artística, Projeto, Web development, Branding, Digital Bloom, Jéssica Serra">
+    <meta name="author" content="Jéssica Serra">
+    <meta name="language" content="Português">
+
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../Assets/favicontest3/favicon-16x16.png" sizes="16x16" />
 
     <link rel="stylesheet" href="../Css/style.css" />
 
@@ -18,8 +28,15 @@
             <div class="container-fluid">
                 <h1 class="portfolio"><a href="../index.html">Port<br><span class="folio">folio</span></a></h1>
             </div>
-            <button id="darkModeToggle">🌙</button>
-            <a href="../index.html#proj-design" class="return-button">← Voltar</a>
+
+            <div class="page-indicators">
+                <div class="dot dot-blue" data-page="home"><img src="../Assets/svgs/home.svg" alt="home icon"></div>
+                <div class="dot dot-orange" data-page="about"><img src="../Assets/svgs/person.svg" alt="about icon">
+                </div>
+                <div class="dot dot-green" data-page="projects"><img src="../Assets/svgs/brush.svg" alt="projects icon">
+                </div>
+            </div>
+            <button class="modebtn" id="darkModeToggle" aria-label="Toggle dark mode">☀️</button>
         </nav>
 
     </header>
@@ -97,13 +114,12 @@
             <div class="container">
                 <h2>Outros Projetos Interessantes</h2>
                 <div class="project-grid">
-                    <!-- Cartão de projeto relacionado 1 -->
                     <a href="./Project1.html" class="project-card">
                         <img src="../Assets/Design/lumeaS1.webp" alt="Miniatura do Projeto Luméa">
-                        <h3>Nome do Projeto 1</h3>
-                        <p>Breve descrição do Projeto 1, destacando o seu tipo ou objetivo principal.</p>
+                        <h4>Luméa</h4>
+                        <p>Marca que une natureza e bem-estar, oferecendo experiências sensoriais através de
+                            arranjos florais, fragrâncias e terapias.</p>
                     </a>
-                    <!-- Adicione mais cards de projeto conforme necessário -->
                 </div>
             </div>
         </section>
@@ -113,6 +129,7 @@
     <footer class="text-end">
         <small>© Jessica Serra</small>
         <small id="year">2025</small>
+        <button class="lang-toggle" onclick="toggleLanguage()">PT</button>
     </footer>
 
     <script src="../js/projects.js"></script>
