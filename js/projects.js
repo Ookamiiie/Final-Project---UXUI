@@ -127,32 +127,6 @@ toggle.addEventListener("click", () => {
   }
 });
 
-const returnButton = document.getElementById("returnButton");
-
-// Helper: checks if user is in a project page
-function isProjectPageVisible() {
-  return (
-    document.querySelector(".proj-ill")?.style.display === "block" ||
-    document.querySelector(".proj-design")?.style.display === "block"
-  );
-}
-
-// Show or hide the return button depending on the visible section
-function updateReturnButtonVisibility() {
-  if (isProjectPageVisible()) {
-    returnButton.style.display = "block";
-  } else {
-    returnButton.style.display = "none";
-  }
-}
-
-function scrollToSection() {
-  const target = document.querySelector(".proj-design");
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth" });
-  }
-}
-
 function toggleLanguage() {
   const currentURL = window.location.href;
 

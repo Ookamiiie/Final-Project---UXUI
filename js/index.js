@@ -146,7 +146,6 @@ document.querySelectorAll(".dot").forEach((dot) => {
   updateIndicators("home");
 });
 
-// Button animations on about me page
 const iconChar = String.fromCharCode(10549);
 class CVButtonController {
   constructor(button) {
@@ -156,7 +155,7 @@ class CVButtonController {
     this.animating = false;
     this.thankYou = false;
 
-    this.iconDefault = "⤵"; // copy-paste this exact character from your HTML entity
+    this.iconDefault = "⤵"; // same as HTML entity
     this.iconCheck = "✓";
 
     this.init();
@@ -183,6 +182,9 @@ class CVButtonController {
     this.animating = true;
     await this.animateClick();
     this.animating = false;
+
+    // 📂 Open CV after animation finishes
+    this.openCV();
   }
 
   async animateClick() {
@@ -196,13 +198,38 @@ class CVButtonController {
 
     await this.wait(100);
     this.text.textContent = "Thank you";
-    this.icon.textContent = "✓";
+    this.icon.textContent = this.iconCheck;
 
     await this.wait(200);
     this.button.classList.remove("transitioning");
     this.button.classList.add("thank-you");
 
     this.thankYou = true;
+  }
+
+  openCV() {
+    // Detect language
+    let cvPath;
+    if (window.location.pathname.includes("/PT/")) {
+      cvPath = "../Assets/Downloads/JessicaSerraCV.pdf";
+    } else if (window.location.pathname.includes("/EN/")) {
+      cvPath = "../Assets/Downloads/JessicaSerraCVEN.pdf";
+    } else {
+      cvPath = "../Assets/Downloads/JessicaSerraCV.pdf"; // fallback
+    }
+
+    // Try opening CV in new tab
+    const newTab = window.open(cvPath, "_blank");
+
+    // Fallback to download if blocked
+    if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+      const link = document.createElement("a");
+      link.href = cvPath;
+      link.download = cvPath.split("/").pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   }
 
   reset() {
@@ -217,11 +244,6 @@ class CVButtonController {
     return new Promise((res) => setTimeout(res, ms));
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const cvButton = document.getElementById("cvButton");
-  if (cvButton) window.cvButtonController = new CVButtonController(cvButton);
-});
 
 document.getElementById("linkedinButton").addEventListener("click", () => {
   window.open("https://www.linkedin.com/in/jessica-sofia-serra/", "_blank");
@@ -355,51 +377,44 @@ function closeModal() {
 }
 
 const toggle = document.getElementById("darkModeToggle");
-const body = document.body;
 
-// Função para aplicar/remover o dark mode e atualizar o botão
-function applyDarkMode(isDarkModeEnabled) {
-  if (isDarkModeEnabled) {
-    body.classList.add("dark-mode");
-    toggle.classList.add("dark-mode-active"); // Aplica o estilo do botão para dark mode
-    toggle.textContent = "☀️"; // Sol, para voltar ao light mode
+// Load saved preference
+if (localStorage.getItem("dark-mode") === "enabled") {
+  document.body.classList.add("dark-mode");
+  toggle.textContent = "☀️";
+}
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+
+  if (document.body.classList.contains("dark-mode")) {
+    toggle.textContent = "☀️";
     localStorage.setItem("dark-mode", "enabled");
   } else {
-    body.classList.remove("dark-mode");
-    toggle.classList.remove("dark-mode-active"); // Remove o estilo do botão de dark mode
-    toggle.textContent = "🌙"; // Lua, para ir para o dark mode
+    toggle.textContent = "🌙";
     localStorage.setItem("dark-mode", "disabled");
   }
-}
+});
 
-// Carrega a preferência salva ou a preferência do sistema
-const prefersDarkMode =
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
-const savedPreference = localStorage.getItem("dark-mode");
+document.addEventListener("DOMContentLoaded", function () {
+  // Grab the button
+  const cvButton = document.getElementById("cvButton");
 
-if (savedPreference === "enabled") {
-  applyDarkMode(true);
-} else if (savedPreference === "disabled") {
-  applyDarkMode(false);
-} else if (prefersDarkMode) {
-  applyDarkMode(true);
-} else {
-  applyDarkMode(false);
-}
+  // Attach the animation controller
+  if (cvButton) {
+    new CVButtonController(cvButton);
+  }
+});
 
 function toggleLanguage() {
-  // Save scroll position (horizontal and vertical)
-  localStorage.setItem("scrollX", window.scrollX);
-  localStorage.setItem("scrollY", window.scrollY);
+  const currentURL = window.location.href;
 
-  let path = window.location.pathname;
-
-  if (path.includes("/PT/")) {
-    path = path.replace("/PT/", "/EN/");
-  } else if (path.includes("/EN/")) {
-    path = path.replace("/EN/", "/PT/");
+  // Change PT → EN
+  if (currentURL.includes("/PT/")) {
+    window.location.href = currentURL.replace("/PT/", "/EN/");
   }
-
-  window.location.pathname = path;
+  // Change EN → PT
+  else if (currentURL.includes("/EN/")) {
+    window.location.href = currentURL.replace("/EN/", "/PT/");
+  }
 }
