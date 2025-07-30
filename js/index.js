@@ -409,12 +409,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleLanguage() {
   const currentURL = window.location.href;
 
-  // Change PT → EN
-  if (currentURL.includes("/PT/")) {
-    window.location.href = currentURL.replace("/PT/", "/EN/");
+  // If on EN version → go back to root PT
+  if (currentURL.includes("/EN/")) {
+    window.location.href = currentURL.replace("/EN/", "/").replace(/\/$/, "");
   }
-  // Change EN → PT
-  else if (currentURL.includes("/EN/")) {
-    window.location.href = currentURL.replace("/EN/", "/PT/");
+  // If on PT (root) → go to EN version
+  else {
+    // Replace domain root with /EN/
+    const newURL = currentURL.replace(/(\/index\.html)?$/, "/EN/index.html");
+    window.location.href = newURL;
   }
 }

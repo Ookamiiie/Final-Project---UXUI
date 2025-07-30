@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   dots.forEach((dot) => {
     dot.addEventListener("click", () => {
       const targetPage = dot.dataset.page;
-      window.location.href = `../index.html#${targetPage}`;
+      window.location.href = `./index.html#${targetPage}`;
     });
   });
 });
